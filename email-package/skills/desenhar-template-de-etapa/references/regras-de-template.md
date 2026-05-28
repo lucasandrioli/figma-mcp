@@ -1,0 +1,24 @@
+# Regras de Template
+
+- Escolha a estrutura dominante.
+- Quando existir uma base canônica completa da tela, use essa base como ponto de partida do template e remova dela apenas o que for condicionado por boolean, modalidade, adicional ou estado.
+- Se a modalidade mudar a composição relevante da tela, parta de uma base canônica por modalidade antes de parametrizar adicionais e estados.
+- Decida quando a etapa precisa de mais de uma tela própria dentro do mesmo módulo.
+- Preserve a ordem estrutural comum.
+- Trate estado como variant.
+- Prepare boolean apenas quando o template continuar saudável sem o bloco.
+- Não assuma que o boolean será implementado por uma property específica do componente; isso depende da library real.
+- Trate modalidade e adicionais como eixos de parametrização antes de criar outra tela sem necessidade.
+- Se a seleção de um adicional alterar juros, totalizadores, resumos ou condições da própria tela, prefira modelar isso dentro dos blocos estruturais corretos antes de criar um card extra genérico.
+- Considere a library de componentes e a library de tokens como fontes separadas.
+- Reconstrua o template final do zero; não use clone do frame de referência como base do padrão final.
+- Use o inventário de componentes observados nas referências como guia de busca dentro das libraries oficiais conectadas ao arquivo.
+- Se a referência trouxer componentes locais copiados de outro arquivo, use o naming, a sintaxe e a organização deles para procurar equivalentes nas libraries oficiais conectadas.
+- Só aceite componente local como evidência de análise; não o promova automaticamente para o template final.
+- Classifique cada bloco relevante em `already-connected`, `exact-swap`, `compose-from-primitives` ou `blocked` antes de reconstruir.
+- Reconecte uma seção por vez; não reescreva a tela inteira em um único write.
+- Escolha a variant correta com base em semântica, contexto e cues visuais do bloco original; não use o default da library cegamente.
+- Não misture conteúdo variável com estrutura base.
+- Não deixe mode explícito preso nas variantes-base.
+- Não aceite card com altura menor do que `conteúdo + padding`.
+- Não aceite `component set` com variantes cortadas pelo bounding.

@@ -1,0 +1,305 @@
+- [Briefing de etapa](./templates/briefing-de-etapa.md)
+- [Plano de agrupamento](./templates/plano-de-agrupamento.md)
+
+## Regra
+
+Quando uma nova etapa ou um novo caso entrar, tente primeiro preenchê-lo com este modelo antes de pensar em criar novo agente ou nova skill.
+
+```
+
+---
+
+## FILE: .github/skills/jornada-consignado-clusterizado/etapas/consentimento.md
+
+```md
+# Etapa: Consentimento
+
+## Objetivo
+
+Explicar a consulta de dados, capturar a autorização e adaptar o conteúdo ao cluster.
+
+## Padrões esperados
+
+- títulos legais e operacionais por cluster
+- accordions com detalhe expandido
+- possíveis avisos adicionais por cluster
+- estado aberto/fechado como variant
+
+## Agrupamentos comuns
+
+- tela base fechada
+- tela base aberta
+- outras telas do mesmo módulo quando existirem
+
+```
+
+---
+
+## FILE: .github/skills/jornada-consignado-clusterizado/etapas/efetivacao.md
+
+```md
+# Etapa: Efetivação
+
+## Objetivo
+
+Concluir a jornada com aceite final, confirmação operacional e mensagens de conclusão.
+
+## Padrões esperados
+
+- confirmação final
+- recibos ou resumos finais
+- textos legais por cluster e modalidade
+- possíveis blocos condicionais por produto contratado
+- finais alternativos por cluster, como token, anuência externa ou conclusão direta
+
+## Agrupamentos comuns
+
+- `Efetivacao/Base`
+- `Efetivacao/Token`
+- `Efetivacao/Anuencia`
+- `Efetivacao/Conclusao`
+
+```
+
+---
+
+## FILE: .github/skills/jornada-consignado-clusterizado/etapas/revisao.md
+
+```md
+# Etapa: Revisão
+
+## Objetivo
+
+Conferir dados, condições e decisões antes da efetivação.
+
+## Padrões esperados
+
+- resumos de dados
+- blocos de conferência
+- mensagens de alerta e aceite
+- detalhes do contrato com accordions
+- informações importantes com itens condicionais por modalidade e adicionais
+- bottom sheet normativo, como o caso da 4790
+- diferenças de texto e de presença de bloco por cluster, modalidade e adicionais
+
+## Agrupamentos comuns
+
+- `Revisao/Base`
+- `Revisao/DetalhesContrato`
+- `Revisao/InformacoesImportantes`
+- `Revisao/BottomSheet4790`
+
+```
+
+---
+
+## FILE: .github/skills/jornada-consignado-clusterizado/etapas/simulacao.md
+
+```md
+# Etapa: Simulação
+
+## Objetivo
+
+Apresentar cenários, valores, condições e escolhas de simulação por cluster.
+
+## Padrões esperados
+
+- tela base de simulação
+- blocos opcionais por elegibilidade
+- módulos com layout próprio, como seguro e portabilidade de salário
+- textos regulatórios por cluster, modalidade e produto quando necessário
+- telas adicionais disparadas por clique, como editar valor, editar parcela ou rever coberturas
+- totalizadores e resumos financeiros que podem mudar quando adicionais são selecionados
+
+## Agrupamentos comuns
+
+- `Simulacao/Base`
+- `Simulacao/EditarValor`
+- `Simulacao/EditarParcela`
+- `Simulacao/SeguroPrestamista`
+- `Simulacao/SeguroPrestamista/ReverCoberturas`
+- `Simulacao/PortabilidadeSalario`
+
+## Recorte mínimo recomendado para teste
+
+Antes de escalar a etapa inteira, teste este recorte:
+
+- `Simulacao/Base`
+- `Simulacao/SeguroPrestamista`
+- `Simulacao/SeguroPrestamista/ReverCoberturas`
+
+Esse recorte já pressiona:
+
+- composição variável na mesma tela-base;
+- adicionais elegíveis vs selecionados;
+- combinação de adicionais;
+- separação entre `estado`, `adicional`, `modalidade` e `outra tela`.
+
+## Variações mínimas para `Simulacao/Base`
+
+Monte pelo menos estes frames para o agente analisar:
+
+- `Simulacao/Base/PCON - Padrao`
+- `Simulacao/Base/PCON - SeguroDesmarcado`
+- `Simulacao/Base/PCON - SeguroSelecionado`
+- `Simulacao/Base/PCON - PortabilidadeDesmarcada`
+- `Simulacao/Base/PCON - PortabilidadeSelecionada`
+- `Simulacao/Base/PCON - Seguro+Portabilidade`
+- `Simulacao/Base/REFIN - Padrao`
+- `Simulacao/Base/REFIN - SeguroDesmarcado`
+- `Simulacao/Base/REFIN - SeguroSelecionado`
+- `Simulacao/Base/REFIN - PortabilidadeDesmarcada`
+- `Simulacao/Base/REFIN - PortabilidadeSelecionada`
+- `Simulacao/Base/REFIN - Seguro+Portabilidade`
+
+Regra de leitura para esse conjunto:
+
+- `Padrao` não significa versão mínima.
+- `Padrao` deve representar a base canônica mais completa da tela dentro da modalidade analisada.
+- `PCON` e `REFIN` devem ser tratados como pontos de partida estruturais diferentes quando a composição da tela mudar por modalidade.
+- as outras variações mostram o que some, muda ou cresce a partir da base completa da modalidade.
+
+## Componentes mínimos esperados para o teste
+
+- `Page/Simulacao/Base/PCON`
+- `Page/Simulacao/Base/REFIN`
+- `Page/Simulacao/SeguroPrestamista`
+- `Page/Simulacao/SeguroPrestamista/ReverCoberturas`
+- `Simulacao/ResumoDeValores`
+- `Simulacao/ResumoDeParcelas`
+- `Simulacao/ItemDeModulo`
+- `Simulacao/BlocoDinheiroNaConta`
+- `Simulacao/BlocoSaldoARefinanciar`
+- `Simulacao/TotalizadorMensal`
+
+Se o botão atual da library já servir, reutilize-o.
+
+## Regras adicionais de leitura para a base
+
+- `ResumoDeValores` pode concentrar valor solicitado, ação de editar valor, taxa de juros e resumo financeiro relacionado.
+- `ResumoDeParcelas` pode concentrar quantidade de parcelas e ação de editar parcela.
+- `TotalizadorMensal` deve ficar perto do CTA quando a tela exigir uma leitura consolidada do valor final por mês.
+- Se seguro ou portabilidade alterarem juros, totais ou resumos, trate isso primeiro como mudança dentro desses blocos estruturais, não como card solto de contexto.
+
+## Tokens adicionais mínimos
+
+Não crie tokens novos sem necessidade.
+
+Verifique primeiro se a token library atual já cobre:
+
+- background
+- text primary/secondary
+- border subtle
+- action primary
+- spacing base
+- radius base
+- tamanhos mínimos
+
+Só crie gaps reais.
+
+```
+
+---
+
+## FILE: .github/skills/jornada-consignado-clusterizado/templates/briefing-de-etapa.md
+
+```md
+# Briefing de Etapa
+
+```md
+## Etapa
+- Nome:
+- Objetivo:
+
+## Módulos da etapa
+- Lista:
+
+## Telas da etapa
+- Lista:
+
+## Convenção de nomeação dos frames
+- `Padrao` significa:
+- `ClusterN` significa:
+- `Modalidade X` significa:
+- nomes de módulos ou adicionais significam:
+
+## Clusters cobertos
+- Lista:
+
+## Modalidades cobertas
+- Lista:
+
+## Adicionais ou produtos envolvidos
+- Lista:
+
+## Estados relevantes
+- fechado:
+- aberto:
+- outros:
+
+## Libraries conectadas
+- componentes:
+- tokens:
+
+## Observações
+- riscos:
+- exceções:
+- ambiguidades que o agente deve perguntar no chat:
+```
+
+```
+
+---
+
+## FILE: .github/skills/jornada-consignado-clusterizado/templates/plano-de-agrupamento.md
+
+```md
+# Plano de Agrupamento
+
+```md
+## Etapa
+- Nome:
+
+## Grupo 1
+- Módulo:
+- Tela:
+- Frames de referência:
+- Estado:
+- Modalidade:
+- Adicionais:
+- Clusters:
+- Convenção de nomeação observada:
+- Objetivo da análise:
+
+## Grupo 2
+- Módulo:
+- Tela:
+- Frames de referência:
+- Estado:
+- Modalidade:
+- Adicionais:
+- Clusters:
+- Convenção de nomeação observada:
+- Objetivo da análise:
+
+## Grupo 3
+- Módulo:
+- Tela:
+- Frames de referência:
+- Estado:
+- Modalidade:
+- Adicionais:
+- Clusters:
+- Convenção de nomeação observada:
+- Objetivo da análise:
+```
+
+```
+
+---
+
+## FILE: .github/skills/normalizar-handoff-de-etapa/SKILL.md
+
+```md
+---
+name: normalizar-handoff-de-etapa

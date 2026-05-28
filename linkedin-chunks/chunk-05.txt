@@ -1,0 +1,258 @@
+- A estratégia de bind foi decidida com base na library real, sem assumir properties fixas do POC.
+- A escrita será feita apenas nesta etapa.
+- A validação por leitura MCP será executada depois.
+
+```
+
+---
+
+## FILE: .github/skills/curar-aprendizado-de-jornada/SKILL.md
+
+```md
+---
+name: curar-aprendizado-de-jornada
+description: Registra feedback, erros, acertos e atualizações propostas da operação de jornada clusterizada.
+---
+
+# Curar Aprendizado de Jornada
+
+## Arquivos desta skill
+
+- [Feedback e revisões](./learning/feedback-e-revisoes.md)
+- [Erros recorrentes](./learning/erros-recorrentes.md)
+- [Acertos recorrentes](./learning/acertos-recorrentes.md)
+- [Atualizações propostas](./learning/atualizacoes-propostas.md)
+
+## Regra
+
+Registre tudo o que vale repetir ou evitar entre etapas da jornada.
+
+```
+
+---
+
+## FILE: .github/skills/curar-aprendizado-de-jornada/learning/acertos-recorrentes.md
+
+```md
+# Acertos Recorrentes
+
+```md
+### Acerto
+- ID:
+- Descrição:
+- Etapa:
+- Evidências:
+- Regra que vale repetir:
+- Status:
+```
+
+### Acerto
+- ID: acerto-jornada-001
+- Descrição: separar a leitura por conjuntos comparáveis evitou misturar cluster, estado e nível.
+- Etapa: consentimento
+- Evidências: fechado e aberto foram analisados separadamente antes do template.
+- Regra que vale repetir: primeiro agrupar, depois analisar.
+- Status: válido
+
+### Acerto
+- ID: acerto-jornada-002
+- Descrição: só consolidar o template final depois que a library de tokens estiver conectada deixou clara a separação entre componente, token e conteúdo local.
+- Etapa: consentimento
+- Evidências: o template final foi revalidado após os binds estruturais da token library.
+- Regra que vale repetir: template final só fecha depois da revisão da camada visual.
+- Status: válido
+
+```
+
+---
+
+## FILE: .github/skills/curar-aprendizado-de-jornada/learning/atualizacoes-propostas.md
+
+```md
+# Atualizações Propostas
+
+```md
+### Proposta
+- ID:
+- Motivo:
+- Arquivo alvo:
+- Mudança:
+- Evidência:
+- Risco:
+- Status:
+```
+
+```
+
+---
+
+## FILE: .github/skills/curar-aprendizado-de-jornada/learning/erros-recorrentes.md
+
+```md
+# Erros Recorrentes
+
+```md
+### Erro
+- ID:
+- Descrição:
+- Etapa:
+- Evidências:
+- Regra candidata:
+- Status:
+```
+
+### Erro
+- ID: erro-jornada-001
+- Descrição: deixar mode explícito de cluster preso na variante-base do template quebra a separação entre cluster e estado.
+- Etapa: consentimento
+- Evidências: o cluster-5 contaminou a variante-base até o ajuste das instâncias de checagem.
+- Regra candidata: mode por cluster deve ficar apenas em instâncias, nunca na base do template.
+- Status: válido
+
+```
+
+---
+
+## FILE: .github/skills/curar-aprendizado-de-jornada/learning/feedback-e-revisoes.md
+
+```md
+# Feedback e Revisões
+
+```md
+### Revisão
+- ID:
+- Etapa:
+- Grupo:
+- Feedback bruto:
+- Evidência:
+- Impacto:
+- Próxima ação:
+```
+
+```
+
+---
+
+## FILE: .github/skills/desenhar-template-de-etapa/SKILL.md
+
+```md
+---
+name: desenhar-template-de-etapa
+description: Decide ou ajusta o template reutilizável de uma etapa da jornada a partir do relatório consolidado.
+---
+
+# Desenhar Template de Etapa
+
+## Arquivos desta skill
+
+- [Regras de template](./references/regras-de-template.md)
+- [Reconectar ao design system](./references/reconectar-ao-design-system.md)
+- [Checklist de descoberta antes da escrita](./references/checklist-de-descoberta-antes-da-escrita.md)
+- [Tools and Prompts do Figma MCP](../operar-jornada-clusterizada/references/tools-and-prompts-oficial-figma-mcp.md)
+
+## Objetivo
+
+Sair do diagnóstico e chegar a um template de etapa que suporte a maior cobertura possível sem ficar parametrizado demais.
+
+## Disciplina de construção
+
+- construa ou ajuste o template em passos pequenos;
+- depois de cada componente ou template criado, valide estrutura antes de seguir;
+- confirme com leitura estrutural se altura, padding, hug/fill e bounding continuam coerentes;
+- se a referência estiver quebrada, use-a como evidência de negócio, não como modelo de construção.
+- antes de escrever algo novo, confirme por `get_libraries` e `search_design_system` se a library oficial já oferece o componente, token ou style necessário.
+- não faça `use_figma` mutando canvas antes de passar pelo checklist de descoberta.
+
+## Regra de reconstrução
+
+O material de referência serve para:
+
+- entender estrutura;
+- entender variações;
+- identificar componentes usados;
+- detectar defeitos estruturais.
+
+O template final não deve nascer por clone do frame analisado.
+
+Ele deve ser reconstruído do zero usando:
+
+- instâncias das libraries oficiais conectadas ao arquivo;
+- tokens da library oficial de tokens;
+- inventário de componentes observado nas referências como pista de busca.
+- classificação por bloco em:
+  - `already-connected`
+  - `exact-swap`
+  - `compose-from-primitives`
+  - `blocked`
+
+## Validação mínima antes de aceitar um componente ou template
+
+- o conteúdo cabe com respiro real dentro do container;
+- a altura do container comporta `conteúdo + padding`;
+- textos variáveis não ficam presos em alturas fixas frágeis;
+- o `component set` engloba todas as variantes sem corte;
+- a composição cresce por `HUG` quando o conteúdo cresce;
+- alterações de adicionais selecionados entram primeiro nos blocos corretos da tela, antes de virar card extra genérico.
+
+```
+
+---
+
+## FILE: .github/skills/desenhar-template-de-etapa/references/checklist-de-descoberta-antes-da-escrita.md
+
+```md
+# Checklist de Descoberta Antes da Escrita
+
+Use este checklist antes de qualquer `use_figma` que vá mutar canvas.
+
+## Hard gates
+
+É proibido escrever no Figma antes de confirmar:
+
+- qual é a etapa;
+- qual é o módulo;
+- qual é a tela;
+- qual é o conjunto comparável que está sendo tratado;
+- quais são os eixos de variação relevantes:
+  - cluster
+  - modalidade
+  - adicionais
+  - estado
+- quais libraries oficiais estão conectadas;
+- quais componentes equivalentes já existem ou não;
+- qual estratégia cada bloco pede:
+  - `already-connected`
+  - `exact-swap`
+  - `compose-from-primitives`
+  - `blocked`
+
+## Checklist mínimo
+
+Antes de escrever, confirme explicitamente:
+
+- `get_metadata` foi usado para leitura leve da árvore quando necessário;
+- `get_design_context` foi usado para entender a composição do que será reconstruído;
+- `get_libraries` foi usado para descobrir o universo oficial disponível;
+- `search_design_system` foi usado antes de recriar componente oficial do zero;
+- o inventário de instâncias e componentes locais foi capturado;
+- a variant correta foi decidida por semântica e contexto, não por default cego;
+- o write será pequeno e localizado;
+- a validação pós-write já está prevista.
+
+## Regra de bloqueio
+
+Se algum desses itens estiver em aberto:
+
+- não escreva;
+- registre a pendência;
+- continue a descoberta ou peça confirmação humana curta no chat.
+
+```
+
+---
+
+## FILE: .github/skills/desenhar-template-de-etapa/references/reconectar-ao-design-system.md
+
+```md
+# Reconectar ao Design System
+

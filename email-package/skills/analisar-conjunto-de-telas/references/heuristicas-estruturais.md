@@ -1,0 +1,22 @@
+# Heurísticas Estruturais
+
+- Se a mesma função aparece em todos os clusters, trate como parte do padrão-base.
+- Se um bloco só aparece em alguns clusters e o template continua íntegro sem ele, marque como candidato a boolean.
+- Se um bloco só aparece quando um adicional foi contratado, marque como candidato a boolean do domínio daquele adicional.
+- Se o conteúdo muda por modalidade sem mudar a função do bloco, marque como candidato a parametrização por modalidade.
+- Se só o texto muda, marque como candidato a string.
+- Se a diferença é aberto/fechado, foco/detalhe, expansão/retração, marque como estado.
+- Se frames com o mesmo prefixo de etapa e tela têm sufixos semânticos diferentes e o `get_metadata` ou `get_design_context` mostrar blocos extras, alturas diferentes ou composição expandida, trate isso como variação intencional da mesma tela.
+- Se a composição cresce porque um adicional está selecionado, não trate isso automaticamente como outra tela; primeiro trate como candidato a estado, boolean ou composição da mesma tela.
+- Se a composição cresce porque um adicional está selecionado e a mudança acontece em blocos já existentes, prefira interpretar isso como alteração de conteúdo, totais, juros, resumos ou estados da mesma tela, não como necessidade automática de um card extra genérico.
+- Se existir um frame `Padrao` no conjunto e o contexto indicar que ele foi montado para expor todas as possibilidades da tela, trate esse frame como base canônica completa para comparação.
+- Se a diferença abre outra composição com layout próprio, marque como outra tela do mesmo módulo.
+- Se a diferença muda demais a arquitetura da tela, marque como estrutural.
+- Se a leitura estrutural mostrar que o conteúdo interno encosta nas bordas, excede a altura disponível ou faz o set ficar cortado, registre isso como fragilidade estrutural da referência e não reproduza esse defeito no padrão novo.
+- Sempre registre quais instâncias, componentes locais e padrões de nomeação apareceram nas referências.
+- Priorize `get_design_context` para entender a composição observada e `get_metadata` para confirmar árvore, dimensões e hierarquia.
+- Use `get_libraries` para limitar o universo oficial de busca antes de procurar equivalentes.
+- Use `search_design_system` com os nomes observados para montar a lista de equivalentes prováveis.
+- Use `use_figma` em leitura somente quando precisar separar com precisão instâncias, componentes locais, variants e propriedades observadas.
+- Se a referência vier de um frame copiado e trouxer componentes locais, trate esses nomes como pista de busca, não como fonte oficial de reconstrução.
+- Se um componente não estiver instanciado na library oficial do arquivo atual, procure equivalentes pela sintaxe, organização e naming nas libraries conectadas antes de criar algo novo.

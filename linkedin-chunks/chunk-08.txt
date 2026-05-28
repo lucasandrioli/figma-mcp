@@ -1,0 +1,278 @@
+description: Consolida análises de uma etapa em um relatório único pronto para template, parametrização e curadoria.
+---
+
+# Normalizar Handoff de Etapa
+
+## Arquivos desta skill
+
+- [Estrutura de relatório](./references/estrutura-de-relatorio.md)
+
+## Objetivo
+
+Transformar análises parciais em um handoff único, sem contradição e sem duplicação.
+
+```
+
+---
+
+## FILE: .github/skills/normalizar-handoff-de-etapa/references/estrutura-de-relatorio.md
+
+```md
+# Estrutura de Relatório
+
+## Etapa analisada
+- Nome:
+- Grupos avaliados:
+
+## Estrutura dominante da etapa
+
+## Diferenças por cluster
+
+## Diferenças por estado
+
+## Diferenças por modalidade e adicionais
+
+## Template recomendado
+
+## Estratégia por bloco
+- already-connected
+- exact-swap
+- compose-from-primitives
+- blocked
+
+## Candidatos a string
+
+## Candidatos a boolean
+
+## Candidatos a variant
+
+## Itens estruturais
+
+## Pendências humanas
+
+```
+
+---
+
+## FILE: .github/skills/operar-jornada-clusterizada/SKILL.md
+
+```md
+---
+name: operar-jornada-clusterizada
+description: Orquestra a operação de análise, template, parametrização e aprendizado para etapas de jornada com cluster, modalidade, adicionais, módulos e telas.
+---
+
+# Operar Jornada Clusterizada
+
+Use esta skill para conduzir a operação de ponta a ponta sem criar um agente por tela.
+
+## Arquivos desta skill
+
+- [Modelo operacional](./references/modelo-operacional.md)
+- [Eixos de variação](./references/eixos-de-variacao.md)
+- [Disciplina de tools MCP](./references/disciplina-de-tools-mcp.md)
+- [Tools and Prompts do Figma MCP](./references/tools-and-prompts-oficial-figma-mcp.md)
+- [Orquestração multi-agent no VS Code](./references/orquestracao-multi-agent-vscode.md)
+- [Regras de escalabilidade](./references/regras-de-escalabilidade.md)
+
+## Ideia central
+
+Escala não vem de criar um agente por página.
+
+Escala vem de:
+
+- poucos agentes por função;
+- agrupamento correto das telas;
+- contexto de etapa separado da lógica dos agentes;
+- eixos de variação explícitos por etapa;
+- escrita no Figma apenas no final.
+
+```
+
+---
+
+## FILE: .github/skills/operar-jornada-clusterizada/references/disciplina-de-tools-mcp.md
+
+```md
+# Disciplina de Tools MCP
+
+Consulte também:
+
+- [Tools and Prompts do Figma MCP](./tools-and-prompts-oficial-figma-mcp.md)
+
+## Leitura
+
+Use:
+
+- `get_libraries`
+- `get_metadata`
+- `get_design_context`
+- `get_variable_defs`
+- `search_design_system`
+
+## Decisão
+
+Durante análise, normalização, template e planejamento:
+
+- não escrever no Figma
+- não criar variables
+- não mudar componentes
+
+## Escrita
+
+Use `use_figma` apenas:
+
+- na construção final do template, quando aprovado;
+- na criação final de collection, modes, variables e binds;
+- em chamadas pequenas, explícitas e validadas depois.
+
+## Hard gate de escrita
+
+É proibido mutar canvas com `use_figma` antes de:
+
+- fechar descoberta de libraries, componentes e tokens relevantes;
+- fechar classificação por bloco;
+- fechar escopo do write atual;
+- preparar a validação pós-write.
+
+## Observações importantes
+
+- `get_design_context` é a leitura principal; `get_metadata` entra quando você precisa primeiro de uma visão leve da árvore ou quando o design é grande demais para aprofundar de uma vez.
+- `get_libraries` e `search_design_system` devem acontecer antes de reconstruir qualquer padrão com design system oficial.
+- `use_figma` pode ser usado em leitura somente quando `get_design_context` e `get_metadata` não bastarem.
+
+```
+
+---
+
+## FILE: .github/skills/operar-jornada-clusterizada/references/eixos-de-variacao.md
+
+```md
+# Eixos de Variação
+
+Toda etapa deve ser lida com estes eixos explícitos:
+
+- `etapa`
+- `módulo`
+- `tela`
+- `estado`
+- `cluster`
+- `modalidade`
+- `adicionais`
+
+## Regra
+
+Não trate tudo como cluster.
+
+Antes de planejar template ou variável, classifique cada diferença em um destes eixos.
+
+## Uso prático
+
+- `cluster`: convênio, órgão, grupo operacional
+- `modalidade`: novo, refinanciamento, portabilidade
+- `adicionais`: seguro, portabilidade de salário, outros módulos opcionais
+- `estado`: aberto, fechado, preenchido, selecionado, bottom sheet aberto
+- `tela`: composição específica que abre dentro da mesma etapa
+- `módulo`: assunto ou pacote funcional, como seguro, portabilidade, detalhes do contrato
+
+```
+
+---
+
+## FILE: .github/skills/operar-jornada-clusterizada/references/modelo-operacional.md
+
+```md
+# Modelo Operacional
+
+## Estrutura
+
+- `agentes por função`
+- `skills por função`
+- `documentação por etapa da jornada`
+- `contexto por módulo`
+- `agrupamento de telas por conjunto comparável`
+
+## Fluxo
+
+1. Escolher a etapa da jornada.
+2. Mapear módulos, telas e eixos de variação.
+3. Montar os conjuntos comparáveis de telas, de preferência com links de frame e `node-id`.
+4. Analisar cada conjunto.
+5. Consolidar o handoff.
+6. Decidir o template.
+7. Planejar parametrização.
+8. Escrever no Figma.
+9. Curar o aprendizado.
+
+## Fan-out recomendado
+
+- um worker por conjunto comparável;
+- se o conjunto for grande demais, um worker por frame ou subgrupo com o mesmo recorte semântico;
+- consolidação sempre volta para um handoff único antes de qualquer escrita.
+
+## Exemplos de conjunto comparável
+
+- etapa `consentimento`, tela `base`, estado `fechado`, clusters `1-5`
+- etapa `consentimento`, tela `base`, estado `aberto`, clusters `1-5`
+- etapa `simulacao`, tela `base`, modalidade `refinanciamento`, com e sem adicionais
+- etapa `revisao`, módulo `detalhes do contrato`, tela `acordeoes`, estado `aberto`
+
+```
+
+---
+
+## FILE: .github/skills/operar-jornada-clusterizada/references/orquestracao-multi-agent-vscode.md
+
+```md
+# Orquestração Multi-Agent no VS Code
+
+Referências oficiais:
+
+- [Subagents in VS Code](https://code.visualstudio.com/docs/copilot/agents/subagents)
+- [Custom agents in VS Code](https://code.visualstudio.com/docs/copilot/customization/custom-agents)
+- [Agents concepts](https://code.visualstudio.com/docs/copilot/concepts/agents)
+
+## Objetivo
+
+Adaptar a operação deste repo ao runtime real de **VS Code + GitHub Copilot custom agents**.
+
+## Papéis
+
+### Agente principal visível
+
+Use um agente principal no picker:
+
+- `operador-de-jornada`
+
+Esse agente:
+
+- recebe o pedido do usuário;
+- entende a etapa;
+- divide a tarefa;
+- chama subagents quando contexto isolado ajudar;
+- consolida o resultado final.
+
+### Workers internos
+
+Use como subagents:
+
+- `analista-de-conjunto-de-telas`
+- `normalizador-de-handoff-de-etapa`
+- `desenhador-de-template-de-etapa`
+- `planejador-de-parametrizacao-de-etapa`
+- `criador-de-parametrizacao-de-etapa`
+- `curador-de-aprendizado-de-jornada`
+
+Esses agentes:
+
+- não precisam aparecer no picker para o usuário;
+- podem ficar com `user-invocable: false`;
+- continuam podendo ser chamados programaticamente pelo agente principal.
+
+## Regras de frontmatter
+
+Para agents deste repo no VS Code:
+
+- use `target: vscode`
+- use `user-invocable: false` para workers internos
+- use `disable-model-invocation: true` quando o agente só deve ser chamado manualmente pelo usuário
