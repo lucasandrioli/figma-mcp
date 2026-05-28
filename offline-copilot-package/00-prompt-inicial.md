@@ -3,7 +3,9 @@
 Cole este prompt primeiro no chat do Copilot:
 
 ```text
-Vou reconstruir um projeto neste workspace por meio de chunks de texto.
+Ignore a instalação anterior deste projeto.
+
+Quero reinstalar tudo do zero neste workspace, substituindo o que já existir pelos novos arquivos que eu vou colar em sequência.
 
 Regras:
 1. Cada próximo bloco que eu colar terá um ou mais arquivos completos no formato `===== FILE: caminho =====` e terminará com `===== END FILE =====`.
@@ -16,4 +18,4 @@ Regras:
 8. Quando eu disser `FIM DA INSTALACAO`, responda com um resumo final da estrutura criada.
 ```
 
-Depois disso, cole os arquivos em `chunks/` na ordem numérica.
+Depois disso, cole os arquivos em `chunks/` na ordem numérica, do `chunk-01.md` ao `chunk-08.md`.

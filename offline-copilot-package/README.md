@@ -9,6 +9,7 @@ Este pacote já inclui a regra de que o mesmo arquivo Figma pode servir como ref
 ## Ordem de uso
 
 1. Abra `00-prompt-inicial.md` e cole o prompt no chat do Copilot.
+   Esse prompt já instrui o Copilot a ignorar qualquer instalação anterior e reinstalar tudo do zero no workspace.
 2. Depois, cole os arquivos de `chunks/` em ordem: `chunk-01.md`, `chunk-02.md`, etc.
 3. Ao final, envie: `FIM DA INSTALACAO`.
 
