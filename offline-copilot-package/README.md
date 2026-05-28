@@ -2,6 +2,8 @@
 
 Formato offline sem code fences externas, para evitar ambiguidade com arquivos Markdown que já contêm blocos cercados por crases.
 
+O arquivo `MCP-TOOLS-REFERENCE.md` foi promovido para a raiz para deixar a referência de tools MCP visível logo no início da instalação.
+
 ## Ordem de uso
 
 1. Abra `00-prompt-inicial.md` e cole o prompt no chat do Copilot.
@@ -12,10 +14,11 @@ Formato offline sem code fences externas, para evitar ambiguidade com arquivos M
 
 - `chunk-01.md`: 4 arquivos
   - `README.md`
+  - `MCP-TOOLS-REFERENCE.md`
   - `.github/agents/analista-de-conjunto-de-telas.agent.md`
   - `.github/agents/criador-de-parametrizacao-de-etapa.agent.md`
+- `chunk-02.md`: 7 arquivos
   - `.github/agents/curador-de-aprendizado-de-jornada.agent.md`
-- `chunk-02.md`: 6 arquivos
   - `.github/agents/desenhador-de-template-de-etapa.agent.md`
   - `.github/agents/normalizador-de-handoff-de-etapa.agent.md`
   - `.github/agents/operador-de-jornada.agent.md`
