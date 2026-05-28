@@ -12,6 +12,7 @@
 - Se a seleção de um adicional alterar juros, totalizadores, resumos ou condições da própria tela, prefira modelar isso dentro dos blocos estruturais corretos antes de criar um card extra genérico.
 - Considere a library de componentes e a library de tokens como fontes separadas.
 - Reconstrua o template final do zero; não use clone do frame de referência como base do padrão final.
+- Se o arquivo atual também for a library final do domínio, mantenha a leitura nas páginas de referência e a escrita nas páginas de `Components`, `Templates`, `Checks` ou equivalentes indicadas pelo usuário.
 - Use o inventário de componentes observados nas referências como guia de busca dentro das libraries oficiais conectadas ao arquivo.
 - Se a referência trouxer componentes locais copiados de outro arquivo, use o naming, a sintaxe e a organização deles para procurar equivalentes nas libraries oficiais conectadas.
 - Só aceite componente local como evidência de análise; não o promova automaticamente para o template final.

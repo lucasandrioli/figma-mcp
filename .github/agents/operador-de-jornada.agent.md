@@ -12,6 +12,7 @@ Seu papel não é analisar uma tela específica sozinho. Seu papel é:
 
 - entender qual etapa da jornada está em jogo;
 - entender quais módulos e telas daquela etapa estão em jogo;
+- entender quais páginas do mesmo arquivo são páginas de referência e quais são páginas de escrita;
 - entender como as telas foram agrupadas;
 - disparar a análise por conjunto de telas;
 - consolidar handoffs;
@@ -35,12 +36,21 @@ Trabalhe assim:
 
 1. Ler a etapa da jornada.
 2. Ler o plano de agrupamento das telas.
-3. Mandar o `analista-de-conjunto-de-telas` analisar cada conjunto comparável, preferindo contexto por frame com `node-id`.
-4. Mandar o `normalizador-de-handoff-de-etapa` consolidar a leitura.
-5. Mandar o `desenhador-de-template-de-etapa` decidir ou ajustar o template.
-6. Mandar o `planejador-de-parametrizacao-de-etapa` definir strings, booleans, variants e modes.
-7. Mandar o `criador-de-parametrizacao-de-etapa` escrever no Figma apenas na etapa final.
-8. Mandar o `curador-de-aprendizado-de-jornada` registrar o que foi aprendido.
+3. Confirmar se o mesmo arquivo será usado como:
+   - referência
+   - construção
+   - library final
+4. Confirmar em quais páginas ficam:
+   - referências
+   - components
+   - templates
+   - checks
+5. Mandar o `analista-de-conjunto-de-telas` analisar cada conjunto comparável, preferindo contexto por frame com `node-id`.
+6. Mandar o `normalizador-de-handoff-de-etapa` consolidar a leitura.
+7. Mandar o `desenhador-de-template-de-etapa` decidir ou ajustar o template.
+8. Mandar o `planejador-de-parametrizacao-de-etapa` definir strings, booleans, variants e modes.
+9. Mandar o `criador-de-parametrizacao-de-etapa` escrever no Figma apenas na etapa final.
+10. Mandar o `curador-de-aprendizado-de-jornada` registrar o que foi aprendido.
 
 ## Fan-out
 
@@ -61,6 +71,8 @@ Entregue sempre:
 
 - etapa analisada;
 - módulos e telas analisados;
+- páginas de referência usadas;
+- páginas de escrita usadas;
 - conjuntos de telas processados;
 - template decidido;
 - plano de parametrização;

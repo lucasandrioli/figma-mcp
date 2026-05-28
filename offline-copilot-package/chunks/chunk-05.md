@@ -1,3 +1,75 @@
+===== FILE: .github/skills/jornada-consignado-clusterizado/etapas/consentimento.md =====
+# Etapa: Consentimento
+
+## Objetivo
+
+Explicar a consulta de dados, capturar a autorização e adaptar o conteúdo ao cluster.
+
+## Padrões esperados
+
+- títulos legais e operacionais por cluster
+- accordions com detalhe expandido
+- possíveis avisos adicionais por cluster
+- estado aberto/fechado como variant
+
+## Agrupamentos comuns
+
+- tela base fechada
+- tela base aberta
+- outras telas do mesmo módulo quando existirem
+
+===== END FILE =====
+
+===== FILE: .github/skills/jornada-consignado-clusterizado/etapas/efetivacao.md =====
+# Etapa: Efetivação
+
+## Objetivo
+
+Concluir a jornada com aceite final, confirmação operacional e mensagens de conclusão.
+
+## Padrões esperados
+
+- confirmação final
+- recibos ou resumos finais
+- textos legais por cluster e modalidade
+- possíveis blocos condicionais por produto contratado
+- finais alternativos por cluster, como token, anuência externa ou conclusão direta
+
+## Agrupamentos comuns
+
+- `Efetivacao/Base`
+- `Efetivacao/Token`
+- `Efetivacao/Anuencia`
+- `Efetivacao/Conclusao`
+
+===== END FILE =====
+
+===== FILE: .github/skills/jornada-consignado-clusterizado/etapas/revisao.md =====
+# Etapa: Revisão
+
+## Objetivo
+
+Conferir dados, condições e decisões antes da efetivação.
+
+## Padrões esperados
+
+- resumos de dados
+- blocos de conferência
+- mensagens de alerta e aceite
+- detalhes do contrato com accordions
+- informações importantes com itens condicionais por modalidade e adicionais
+- bottom sheet normativo, como o caso da 4790
+- diferenças de texto e de presença de bloco por cluster, modalidade e adicionais
+
+## Agrupamentos comuns
+
+- `Revisao/Base`
+- `Revisao/DetalhesContrato`
+- `Revisao/InformacoesImportantes`
+- `Revisao/BottomSheet4790`
+
+===== END FILE =====
+
 ===== FILE: .github/skills/jornada-consignado-clusterizado/etapas/simulacao.md =====
 # Etapa: Simulação
 
@@ -140,6 +212,15 @@ Só crie gaps reais.
 - componentes:
 - tokens:
 
+## Papel do arquivo atual
+- este arquivo também é a library final do domínio?:
+- páginas de referência:
+- páginas de escrita:
+  - components:
+  - templates:
+  - checks:
+  - outras:
+
 ## Observações
 - riscos:
 - exceções:
@@ -154,6 +235,12 @@ Só crie gaps reais.
 ```md
 ## Etapa
 - Nome:
+- Páginas de referência:
+- Páginas de escrita:
+  - components:
+  - templates:
+  - checks:
+  - outras:
 
 ## Grupo 1
 - Módulo:
@@ -354,44 +441,6 @@ Antes de planejar template ou variável, classifique cada diferença em um deste
 - `estado`: aberto, fechado, preenchido, selecionado, bottom sheet aberto
 - `tela`: composição específica que abre dentro da mesma etapa
 - `módulo`: assunto ou pacote funcional, como seguro, portabilidade, detalhes do contrato
-
-===== END FILE =====
-
-===== FILE: .github/skills/operar-jornada-clusterizada/references/modelo-operacional.md =====
-# Modelo Operacional
-
-## Estrutura
-
-- `agentes por função`
-- `skills por função`
-- `documentação por etapa da jornada`
-- `contexto por módulo`
-- `agrupamento de telas por conjunto comparável`
-
-## Fluxo
-
-1. Escolher a etapa da jornada.
-2. Mapear módulos, telas e eixos de variação.
-3. Montar os conjuntos comparáveis de telas, de preferência com links de frame e `node-id`.
-4. Analisar cada conjunto.
-5. Consolidar o handoff.
-6. Decidir o template.
-7. Planejar parametrização.
-8. Escrever no Figma.
-9. Curar o aprendizado.
-
-## Fan-out recomendado
-
-- um worker por conjunto comparável;
-- se o conjunto for grande demais, um worker por frame ou subgrupo com o mesmo recorte semântico;
-- consolidação sempre volta para um handoff único antes de qualquer escrita.
-
-## Exemplos de conjunto comparável
-
-- etapa `consentimento`, tela `base`, estado `fechado`, clusters `1-5`
-- etapa `consentimento`, tela `base`, estado `aberto`, clusters `1-5`
-- etapa `simulacao`, tela `base`, modalidade `refinanciamento`, com e sem adicionais
-- etapa `revisao`, módulo `detalhes do contrato`, tela `acordeoes`, estado `aberto`
 
 ===== END FILE =====
 

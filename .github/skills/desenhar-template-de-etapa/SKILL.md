@@ -36,6 +36,18 @@ O material de referência serve para:
 
 O template final não deve nascer por clone do frame analisado.
 
+Se o mesmo arquivo for ao mesmo tempo:
+
+- referência
+- construção
+- library final
+
+então:
+
+- leia nas páginas de referência;
+- escreva apenas nas páginas de construção;
+- não trate os frames colados como destino do padrão final.
+
 Ele deve ser reconstruído do zero usando:
 
 - instâncias das libraries oficiais conectadas ao arquivo;

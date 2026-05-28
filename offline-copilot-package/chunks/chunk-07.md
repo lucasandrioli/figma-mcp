@@ -1,3 +1,216 @@
+===== FILE: .github/skills/operar-jornada-clusterizada/references/tools-and-prompts-oficial-figma-mcp.md =====
+# Tools and Prompts do Figma MCP
+
+Referência operacional baseada na documentação oficial:
+
+- [Figma MCP Server: Tools and prompts](https://developers.figma.com/docs/figma-mcp-server/tools-and-prompts/)
+
+Use este arquivo para decidir **qual tool MCP usar** e **em que momento do fluxo**.
+
+## Regra geral
+
+- prefira `get_design_context` como leitura principal do design;
+- use `get_metadata` como leitura mais leve quando precisar primeiro de árvore, nomes, tipos, posições e tamanhos;
+- use `get_libraries` e `search_design_system` antes de recriar qualquer coisa do design system;
+- use `get_variable_defs` para entender tokens, styles e variables já aplicadas;
+- use `use_figma` como tool geral de escrita e inspeção programática mais fina;
+- use `whoami` quando houver dúvida de autenticação, plano, seat ou permissão.
+
+## Mapa de uso por tool
+
+### `get_design_context`
+
+Use quando:
+
+- precisar entender a composição real de um frame ou camada;
+- precisar ler estrutura, textos, blocos, instâncias e relações visuais;
+- for a leitura principal antes da análise ou reconstrução.
+
+Não use como primeira opção quando:
+
+- o frame for muito grande e você ainda não souber onde focar.
+
+Nesse caso:
+
+- use `get_metadata` primeiro;
+- depois faça `get_design_context` só nos nós relevantes.
+
+### `get_metadata`
+
+Use quando:
+
+- precisar de uma leitura leve da árvore;
+- quiser descobrir páginas ou nós antes de aprofundar;
+- estiver lidando com designs grandes e quiser reduzir contexto;
+- quiser confirmar dimensões, tipos, posições e hierarquia;
+- quiser checar rapidamente se a composição cresceu, se a altura mudou ou se há sinais de bounding quebrado.
+
+Não pare no `get_metadata` quando a tarefa exigir implementação ou análise fina da composição.
+
+### `get_libraries`
+
+Use quando:
+
+- precisar saber quais libraries oficiais estão conectadas no arquivo;
+- quiser distinguir library já conectada de library só disponível para adicionar;
+- for procurar equivalentes oficiais para componentes locais encontrados nas referências.
+
+Essa tool deve vir antes de `search_design_system` quando o objetivo for reconstrução com design system oficial.
+
+### `search_design_system`
+
+Use quando:
+
+- quiser procurar componentes, variables ou styles existentes;
+- tiver coletado nomes úteis a partir das referências e quiser buscar equivalentes oficiais;
+- precisar evitar recriação manual de componente já existente.
+
+Use junto com:
+
+- `get_libraries`, para delimitar o universo oficial;
+- `get_design_context`, para saber o que procurar.
+
+### `get_variable_defs`
+
+Use quando:
+
+- precisar entender quais tokens, variables e styles já estão aplicados num nó;
+- quiser validar se o template já está bindado corretamente;
+- quiser planejar parametrização sem escrever ainda.
+
+### `get_screenshot`
+
+Use quando:
+
+- o ambiente permitir imagem;
+- a tarefa exigir validação visual de fidelidade, clipping, spacing ou hierarquia visual.
+
+No ambiente corporativo com restrição de circulação de imagem:
+
+- não dependa dessa tool;
+- substitua a validação visual por leitura estrutural com `get_design_context`, `get_metadata` e inspeção programática via `use_figma` read-only.
+
+### `use_figma`
+
+Use quando:
+
+- precisar criar, editar ou remover nós;
+- precisar construir templates, componentes, variants, variables, styles ou bindings;
+- precisar de inspeção programática mais precisa do arquivo, além do que as tools de leitura devolvem;
+- precisar confirmar detalhes como:
+  - instâncias vs componentes locais;
+  - `mainComponent`;
+  - variants;
+  - properties;
+  - bounding;
+  - sizing modes;
+  - conteúdo + padding vs altura real.
+
+No fluxo deste repo:
+
+- leitura e decisão primeiro;
+- escrita com `use_figma` só no momento final e de forma explícita;
+- se `use_figma` for usado em leitura, faça isso só quando `get_design_context` e `get_metadata` não bastarem.
+
+### `whoami`
+
+Use quando:
+
+- houver erro de permissão;
+- houver dúvida sobre qual conta Figma está autenticada;
+- for necessário entender plano, organização ou tipo de seat.
+
+### `create_new_file`
+
+Use quando:
+
+- for necessário criar um arquivo novo de design, FigJam ou Slides.
+
+No contexto deste repo:
+
+- só use quando a operação realmente exigir um arquivo novo;
+- não use para contornar problema de modelagem num arquivo que já existe.
+
+### `generate_diagram`
+
+Use quando:
+
+- o usuário pedir diagrama em FigJam;
+- o objetivo for fluxograma, sequência, gantt, state diagram, arquitetura ou ERD.
+
+Não use para construir telas de produto.
+
+### `generate_figma_design`
+
+Use quando:
+
+- o objetivo for capturar layout de uma interface web para Figma pela primeira vez;
+- você estiver fazendo um fluxo de code-to-canvas.
+
+Não é a tool principal deste repo para reconstrução de templates de jornada a partir de telas existentes.
+
+### `get_figjam`
+
+Use apenas em FigJam.
+
+### `upload_assets`
+
+Use quando:
+
+- precisar subir imagem ou asset para o arquivo;
+- quiser aplicar imagem a um nó ou criar frames com asset.
+
+### Code Connect tools
+
+- `get_code_connect_map`
+- `add_code_connect_map`
+- `get_context_for_code_connect`
+- `send_code_connect_mappings`
+
+Use quando o fluxo for de Code Connect.
+
+Não são tools centrais da operação de análise de jornadas, exceto quando o objetivo for reconciliar Figma com componentes de código via Code Connect.
+
+## Ordem preferida por tipo de trabalho
+
+### Analisar telas comparáveis
+
+1. `get_metadata`
+2. `get_design_context`
+3. `get_libraries`
+4. `search_design_system`
+5. `use_figma` read-only, se necessário
+
+### Reconstruir template com design system oficial
+
+1. `get_libraries`
+2. `search_design_system`
+3. `get_design_context` nas referências
+4. `get_variable_defs`, se precisar validar binds/tokens
+5. `use_figma` para escrita final
+
+### Planejar parametrização
+
+1. `get_design_context`
+2. `get_variable_defs`
+3. `get_libraries`
+4. `search_design_system`, se houver dúvida sobre componente/property oficial
+
+### Criar parametrização
+
+1. validar que análise e plano já estão fechados
+2. `use_figma` para criar collections, modes, variables, bindings e ajustes finais
+
+## Regra de ouro deste repo
+
+- não misture análise com escrita;
+- não recrie design system antes de procurar nas libraries oficiais;
+- não trate `get_metadata` como substituto de `get_design_context`;
+- não trate `use_figma` como primeira tool de descoberta quando uma tool de leitura oficial resolver;
+- não dependa de screenshot em ambientes corporativos onde imagem não pode circular.
+
+===== END FILE =====
+
 ===== FILE: .github/skills/planejar-parametrizacao-de-etapa/SKILL.md =====
 ---
 name: planejar-parametrizacao-de-etapa
@@ -70,144 +283,6 @@ Elas podem concentrar:
 - `aberto/fechado` continua em variant
 - booleans do POC foram bindados em `visible`, mas a library final pode expor esse controle por outro caminho estrutural
 - a skill não deve assumir nomes fixos de properties ou camadas da library de componentes
-
-===== END FILE =====
-
-===== FILE: .github/skills/planejar-parametrizacao-de-etapa/artefatos/exemplos/simulacao-base-poc-001.md =====
-# Exemplo: Simulação Base POC 001
-
-## Objetivo do teste
-
-Validar se o pipeline entende que `Simulacao/Base` precisa partir de uma base canônica por modalidade e continua sendo a mesma tela dentro de cada modalidade quando:
-
-- seguro aparece ou some;
-- seguro está desmarcado ou selecionado;
-- portabilidade aparece ou some;
-- portabilidade está desmarcada ou selecionada;
-- seguro e portabilidade coexistem;
-- a composição cresce por seleção de adicional.
-
-## Frames mínimos
-
-- `Simulacao/Base/PCON - Padrao`
-- `Simulacao/Base/PCON - SeguroDesmarcado`
-- `Simulacao/Base/PCON - SeguroSelecionado`
-- `Simulacao/Base/PCON - PortabilidadeDesmarcada`
-- `Simulacao/Base/PCON - PortabilidadeSelecionada`
-- `Simulacao/Base/PCON - Seguro+Portabilidade`
-- `Simulacao/Base/REFIN - Padrao`
-- `Simulacao/Base/REFIN - SeguroDesmarcado`
-- `Simulacao/Base/REFIN - SeguroSelecionado`
-- `Simulacao/Base/REFIN - PortabilidadeDesmarcada`
-- `Simulacao/Base/REFIN - PortabilidadeSelecionada`
-- `Simulacao/Base/REFIN - Seguro+Portabilidade`
-
-## Templates esperados
-
-- `Page/Simulacao/Base/PCON`
-- `Page/Simulacao/Base/REFIN`
-- `Page/Simulacao/SeguroPrestamista`
-- `Page/Simulacao/SeguroPrestamista/ReverCoberturas`
-
-## Componentes mínimos
-
-- `Simulacao/ResumoDeValores`
-- `Simulacao/ResumoDeParcelas`
-- `Simulacao/ItemDeModulo`
-- `Simulacao/BlocoDinheiroNaConta`
-- `Simulacao/BlocoSaldoARefinanciar`
-- `Simulacao/TotalizadorMensal`
-
-## Regras de interpretação
-
-- os frames compartilham o prefixo `Simulacao/Base`, mas devem ser separados primeiro por modalidade
-- `PCON` e `REFIN` indicam bases canônicas diferentes
-- dentro de cada modalidade, os sufixos indicam variações deliberadas da mesma tela
-- `Padrao` indica base canônica mais completa da modalidade, não base mínima
-- `SeguroDesmarcado` e `SeguroSelecionado` não indicam novas telas
-- `PortabilidadeDesmarcada` e `PortabilidadeSelecionada` não indicam novas telas
-- `Seguro+Portabilidade` continua sendo a mesma tela-base com composição combinada
-- as demais variações devem ser lidas como redução, expansão ou alteração localizada da base completa da modalidade
-- quando seguro ou portabilidade alterarem juros, totais ou resumos, o agente deve preferir manter isso nos blocos financeiros existentes da tela
-
-## O que o agente deve descobrir
-
-- o que fica fixo no template-base
-- o que vira boolean
-- o que vira variável de conteúdo
-- o que vira variant ou property
-- o que precisa abrir `Simulacao/SeguroPrestamista`
-- o que precisa abrir `Simulacao/SeguroPrestamista/ReverCoberturas`
-- como juros, total mensal e resumos financeiros reagem a modalidade e adicionais sem criar cards genéricos desnecessários
-
-## Tokens adicionais mínimos
-
-Use a token library atual primeiro.
-
-Só crie tokens novos se faltar algo estrutural para a simulação, por exemplo:
-
-- feedback informativo específico
-- espaçamento intermediário ainda não coberto
-- tamanho específico de item clicável
-
-## Aprendizado esperado
-
-- diferença estrutural lida por `get_metadata` ou `get_design_context` não significa automaticamente outra tela
-- quando a modalidade mudar a composição relevante da tela, o agente deve partir de uma base canônica por modalidade
-- quando o nome do frame e a composição apontam para o mesmo prefixo de tela dentro da modalidade, o agente deve tratar isso como variação deliberada da mesma tela
-- `cluster` só entra como `mode` quando houver variação real por cluster
-- resumos e totalizadores financeiros são parte estrutural da tela-base quando aparecem de forma recorrente
-
-===== END FILE =====
-
-===== FILE: .github/skills/planejar-parametrizacao-de-etapa/references/contrato-de-saida.md =====
-# Contrato de Saída
-
-## Collection local proposta
-- tipo:
-- domínio:
-
-## Modes por cluster
-
-## Strings candidatas
-- chave
-- bloco
-- valor por cluster
-
-## Booleans candidatas
-- chave
-- bloco
-- valor por cluster
-
-## Outras variables candidatas
-- chave
-- tipo
-- bloco
-- motivo
-
-## Variants mantidas
-
-## Itens que não devem virar variável
-
-## Bloqueios
-
-## Prontidão para criação
-
-===== END FILE =====
-
-===== FILE: .github/skills/planejar-parametrizacao-de-etapa/references/regras-de-modelagem.md =====
-# Regras de Modelagem
-
-- `mode` é reservado para cluster.
-- `variant` é reservado para estado/interação.
-- `string` é reservada para conteúdo textual que mantém a mesma função.
-- `boolean` é reservada para presença/ausência de bloco sem quebrar o template.
-- `number` é reservada para parâmetros locais que precisem ser editáveis e reutilizáveis.
-- Tokens visuais vêm da library de tokens, não da collection local de conteúdo.
-- Collections locais podem ser por etapa, por módulo ou por domínio de conteúdo.
-- Variables locais servem para conteúdo, regras de presença e outros parâmetros reutilizáveis.
-- A implementação do boolean pode acontecer por `visible` ou por outro vínculo estrutural compatível com a library real.
-- Se um módulo tem layout próprio e conteúdo próprio, ele pode ter template próprio e collection própria.
 
 ===== END FILE =====
 

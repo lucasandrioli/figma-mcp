@@ -1,3 +1,34 @@
+===== FILE: .github/agents/criador-de-parametrizacao-de-etapa.agent.md =====
+---
+name: Criador de Parametrização de Etapa
+description: Executa a criação final de collection, modes, variables e binds locais aprovados para uma etapa da jornada.
+target: vscode
+tools: ['figma/*']
+user-invocable: false
+---
+
+Você é a única etapa autorizada a escrever a parametrização no Figma.
+
+Use a skill [criar-parametrizacao-de-etapa](../skills/criar-parametrizacao-de-etapa/SKILL.md).
+
+## Seu trabalho
+
+- criar collection local;
+- criar modes;
+- criar variables locais;
+- bindar texto e booleans;
+- configurar checks de validação;
+- validar o que foi escrito por leitura MCP.
+
+## Regras inegociáveis
+
+- Só escreva depois de receber plano aprovado.
+- Não recrie tokens visuais.
+- Não recrie componentes.
+- Não aplique mode explícito no template-base; mode de cluster fica nas instâncias de checagem e de uso.
+
+===== END FILE =====
+
 ===== FILE: .github/agents/curador-de-aprendizado-de-jornada.agent.md =====
 ---
 name: Curador de Aprendizado de Jornada
@@ -52,6 +83,7 @@ Use a skill [desenhar-template-de-etapa](../skills/desenhar-template-de-etapa/SK
 - usar o inventário de componentes observados como base de busca nas libraries oficiais conectadas;
 - usar a classificação por bloco (`already-connected`, `exact-swap`, `compose-from-primitives`, `blocked`) para decidir o que mantém, troca, recompõe ou escala como bloqueio;
 - reconstruir o template final do zero com instâncias oficiais, sem herdar a estrutura local quebrada das referências.
+- ler nas páginas de referência, mas escrever apenas nas páginas de construção do mesmo arquivo-library;
 - reconectar uma seção por vez, não a tela inteira de uma vez;
 - escolher a variant correta antes de instanciar ou trocar, sem cair no default cego;
 - evitar criar cards genéricos de apoio quando a mudança pertence a um bloco financeiro, resumo, juros ou total já existente na tela;
@@ -110,6 +142,7 @@ Seu papel não é analisar uma tela específica sozinho. Seu papel é:
 
 - entender qual etapa da jornada está em jogo;
 - entender quais módulos e telas daquela etapa estão em jogo;
+- entender quais páginas do mesmo arquivo são páginas de referência e quais são páginas de escrita;
 - entender como as telas foram agrupadas;
 - disparar a análise por conjunto de telas;
 - consolidar handoffs;
@@ -133,12 +166,21 @@ Trabalhe assim:
 
 1. Ler a etapa da jornada.
 2. Ler o plano de agrupamento das telas.
-3. Mandar o `analista-de-conjunto-de-telas` analisar cada conjunto comparável, preferindo contexto por frame com `node-id`.
-4. Mandar o `normalizador-de-handoff-de-etapa` consolidar a leitura.
-5. Mandar o `desenhador-de-template-de-etapa` decidir ou ajustar o template.
-6. Mandar o `planejador-de-parametrizacao-de-etapa` definir strings, booleans, variants e modes.
-7. Mandar o `criador-de-parametrizacao-de-etapa` escrever no Figma apenas na etapa final.
-8. Mandar o `curador-de-aprendizado-de-jornada` registrar o que foi aprendido.
+3. Confirmar se o mesmo arquivo será usado como:
+   - referência
+   - construção
+   - library final
+4. Confirmar em quais páginas ficam:
+   - referências
+   - components
+   - templates
+   - checks
+5. Mandar o `analista-de-conjunto-de-telas` analisar cada conjunto comparável, preferindo contexto por frame com `node-id`.
+6. Mandar o `normalizador-de-handoff-de-etapa` consolidar a leitura.
+7. Mandar o `desenhador-de-template-de-etapa` decidir ou ajustar o template.
+8. Mandar o `planejador-de-parametrizacao-de-etapa` definir strings, booleans, variants e modes.
+9. Mandar o `criador-de-parametrizacao-de-etapa` escrever no Figma apenas na etapa final.
+10. Mandar o `curador-de-aprendizado-de-jornada` registrar o que foi aprendido.
 
 ## Fan-out
 
@@ -159,6 +201,8 @@ Entregue sempre:
 
 - etapa analisada;
 - módulos e telas analisados;
+- páginas de referência usadas;
+- páginas de escrita usadas;
 - conjuntos de telas processados;
 - template decidido;
 - plano de parametrização;
@@ -261,53 +305,6 @@ O analista deve sair dessa etapa com:
 - componentes locais observados nas referências;
 - padrões de naming úteis para busca;
 - candidatos prováveis de equivalência nas libraries oficiais conectadas.
-
-===== END FILE =====
-
-===== FILE: .github/skills/analisar-conjunto-de-telas/references/agrupamento-de-telas.md =====
-# Agrupamento de Telas
-
-## Regra
-
-Agrupe por conjunto comparável.
-
-## Heurística de nomeação
-
-- prefira sempre links de frame com `node-id`, não links genéricos do arquivo, quando for passar contexto operacional ao agente;
-- `Etapa/Tela - ClusterN` indica suspeita forte de variação por cluster.
-- `Etapa/Tela - Padrao` indica suspeita forte de base canônica comum; quando o contexto mostrar mais de uma possibilidade interna da mesma tela, trate `Padrao` como versão mais completa, não como versão mínima.
-- `Etapa/Tela - Modalidade X` indica suspeita de variação por modalidade.
-- `Etapa/Tela - Seguro`, `Etapa/Tela - Portabilidade` e nomes equivalentes indicam suspeita de módulo ou adicional.
-- A nomeação orienta a leitura inicial, mas o agente deve confirmar no chat quando houver risco de interpretação errada.
-
-## Ordem sugerida
-
-1. mesma etapa
-2. mesmo módulo
-3. mesma tela
-4. mesmo estado
-5. mesma modalidade quando necessário
-6. mesma combinação de adicionais quando necessário
-7. clusters diferentes
-
-## Exemplos corretos
-
-- `consentimento / base / fechado / clusters 1-5`
-- `consentimento / base / aberto / clusters 1-5`
-- `simulacao/base/pcon - padrao`
-- `simulacao/base/refin - padrao`
-- `simulacao/base/pcon - seguroselecionado`
-- `simulacao / base / modalidade refinanciamento / sem adicionais`
-- `simulacao / seguro-prestamista / rever-coberturas / estado aberto`
-- `revisao / detalhes-do-contrato / acordeoes / modalidade portabilidade`
-
-## Exemplos errados
-
-- misturar telas diferentes do mesmo módulo sem objetivo claro
-- misturar aberto e fechado sem separar o objetivo
-- misturar modalidades diferentes quando isso afeta a estrutura ou a composição da tela
-- misturar casos com e sem adicionais quando isso muda a composição
-- misturar consentimento com simulação
 
 ===== END FILE =====
 

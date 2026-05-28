@@ -3,6 +3,12 @@
 ```md
 ## Etapa
 - Nome:
+- Páginas de referência:
+- Páginas de escrita:
+  - components:
+  - templates:
+  - checks:
+  - outras:
 
 ## Grupo 1
 - Módulo:

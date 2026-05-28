@@ -108,15 +108,17 @@ figma-mcp/
 ## Fluxo operacional
 
 1. Escolher a etapa da jornada.
-2. Preencher o `briefing de etapa`.
-3. Mapear módulos, telas, estados, modalidades, adicionais e clusters.
-4. Montar o `plano de agrupamento`.
-5. Rodar o `analista-de-conjunto-de-telas` em cada grupo.
-6. Consolidar com o `normalizador-de-handoff-de-etapa`.
-7. Decidir o template com o `desenhador-de-template-de-etapa`.
-8. Planejar a parametrização com o `planejador-de-parametrizacao-de-etapa`.
-9. Escrever no Figma com o `criador-de-parametrizacao-de-etapa`.
-10. Registrar aprendizado com o `curador-de-aprendizado-de-jornada`.
+2. Confirmar se o mesmo arquivo atual será usado como referência, construção e library final.
+3. Preencher o `briefing de etapa`.
+4. Mapear módulos, telas, estados, modalidades, adicionais e clusters.
+5. Mapear páginas de referência e páginas de escrita.
+6. Montar o `plano de agrupamento`.
+7. Rodar o `analista-de-conjunto-de-telas` em cada grupo.
+8. Consolidar com o `normalizador-de-handoff-de-etapa`.
+9. Decidir o template com o `desenhador-de-template-de-etapa`.
+10. Planejar a parametrização com o `planejador-de-parametrizacao-de-etapa`.
+11. Escrever no Figma com o `criador-de-parametrizacao-de-etapa`.
+12. Registrar aprendizado com o `curador-de-aprendizado-de-jornada`.
 
 ## Modelo de execução no VS Code
 
@@ -124,6 +126,22 @@ figma-mcp/
 - os demais agents podem operar como workers/subagents internos;
 - leitura e análise podem usar fan-out por conjunto, frame ou modalidade;
 - escrita com `use_figma` continua sempre sequencial.
+
+## Mesmo arquivo como library final
+
+Em muitos casos, o mesmo arquivo Figma será usado para:
+
+- colar referências;
+- instanciar libraries base do iDS;
+- construir componentes e templates;
+- criar variables e checks;
+- virar a library final do domínio.
+
+Nesse cenário:
+
+- as páginas de referência servem só como evidência;
+- o padrão final deve nascer em páginas de escrita, como `Components`, `Templates` e `Checks`;
+- o agent não deve editar os frames colados como se eles fossem o destino final.
 
 ## Como isso escala no Itaú
 
@@ -339,37 +357,6 @@ Separar claramente:
 - Não crie variables.
 - Não escreva no Figma.
 - Não misture telas de grupos diferentes no mesmo parecer.
-
-===== END FILE =====
-
-===== FILE: .github/agents/criador-de-parametrizacao-de-etapa.agent.md =====
----
-name: Criador de Parametrização de Etapa
-description: Executa a criação final de collection, modes, variables e binds locais aprovados para uma etapa da jornada.
-target: vscode
-tools: ['figma/*']
-user-invocable: false
----
-
-Você é a única etapa autorizada a escrever a parametrização no Figma.
-
-Use a skill [criar-parametrizacao-de-etapa](../skills/criar-parametrizacao-de-etapa/SKILL.md).
-
-## Seu trabalho
-
-- criar collection local;
-- criar modes;
-- criar variables locais;
-- bindar texto e booleans;
-- configurar checks de validação;
-- validar o que foi escrito por leitura MCP.
-
-## Regras inegociáveis
-
-- Só escreva depois de receber plano aprovado.
-- Não recrie tokens visuais.
-- Não recrie componentes.
-- Não aplique mode explícito no template-base; mode de cluster fica nas instâncias de checagem e de uso.
 
 ===== END FILE =====
 

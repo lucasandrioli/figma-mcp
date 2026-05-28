@@ -35,6 +35,15 @@
 - componentes:
 - tokens:
 
+## Papel do arquivo atual
+- este arquivo também é a library final do domínio?:
+- páginas de referência:
+- páginas de escrita:
+  - components:
+  - templates:
+  - checks:
+  - outras:
+
 ## Observações
 - riscos:
 - exceções:

@@ -1,3 +1,76 @@
+===== FILE: .github/skills/desenhar-template-de-etapa/SKILL.md =====
+---
+name: desenhar-template-de-etapa
+description: Decide ou ajusta o template reutilizável de uma etapa da jornada a partir do relatório consolidado.
+---
+
+# Desenhar Template de Etapa
+
+## Arquivos desta skill
+
+- [Regras de template](./references/regras-de-template.md)
+- [Reconectar ao design system](./references/reconectar-ao-design-system.md)
+- [Checklist de descoberta antes da escrita](./references/checklist-de-descoberta-antes-da-escrita.md)
+- [Tools and Prompts do Figma MCP](../operar-jornada-clusterizada/references/tools-and-prompts-oficial-figma-mcp.md)
+
+## Objetivo
+
+Sair do diagnóstico e chegar a um template de etapa que suporte a maior cobertura possível sem ficar parametrizado demais.
+
+## Disciplina de construção
+
+- construa ou ajuste o template em passos pequenos;
+- depois de cada componente ou template criado, valide estrutura antes de seguir;
+- confirme com leitura estrutural se altura, padding, hug/fill e bounding continuam coerentes;
+- se a referência estiver quebrada, use-a como evidência de negócio, não como modelo de construção.
+- antes de escrever algo novo, confirme por `get_libraries` e `search_design_system` se a library oficial já oferece o componente, token ou style necessário.
+- não faça `use_figma` mutando canvas antes de passar pelo checklist de descoberta.
+
+## Regra de reconstrução
+
+O material de referência serve para:
+
+- entender estrutura;
+- entender variações;
+- identificar componentes usados;
+- detectar defeitos estruturais.
+
+O template final não deve nascer por clone do frame analisado.
+
+Se o mesmo arquivo for ao mesmo tempo:
+
+- referência
+- construção
+- library final
+
+então:
+
+- leia nas páginas de referência;
+- escreva apenas nas páginas de construção;
+- não trate os frames colados como destino do padrão final.
+
+Ele deve ser reconstruído do zero usando:
+
+- instâncias das libraries oficiais conectadas ao arquivo;
+- tokens da library oficial de tokens;
+- inventário de componentes observado nas referências como pista de busca.
+- classificação por bloco em:
+  - `already-connected`
+  - `exact-swap`
+  - `compose-from-primitives`
+  - `blocked`
+
+## Validação mínima antes de aceitar um componente ou template
+
+- o conteúdo cabe com respiro real dentro do container;
+- a altura do container comporta `conteúdo + padding`;
+- textos variáveis não ficam presos em alturas fixas frágeis;
+- o `component set` engloba todas as variantes sem corte;
+- a composição cresce por `HUG` quando o conteúdo cresce;
+- alterações de adicionais selecionados entram primeiro nos blocos corretos da tela, antes de virar card extra genérico.
+
+===== END FILE =====
+
 ===== FILE: .github/skills/desenhar-template-de-etapa/references/checklist-de-descoberta-antes-da-escrita.md =====
 # Checklist de Descoberta Antes da Escrita
 
@@ -217,6 +290,7 @@ Para cada bloco relevante, registre:
 - Se a seleção de um adicional alterar juros, totalizadores, resumos ou condições da própria tela, prefira modelar isso dentro dos blocos estruturais corretos antes de criar um card extra genérico.
 - Considere a library de componentes e a library de tokens como fontes separadas.
 - Reconstrua o template final do zero; não use clone do frame de referência como base do padrão final.
+- Se o arquivo atual também for a library final do domínio, mantenha a leitura nas páginas de referência e a escrita nas páginas de `Components`, `Templates`, `Checks` ou equivalentes indicadas pelo usuário.
 - Use o inventário de componentes observados nas referências como guia de busca dentro das libraries oficiais conectadas ao arquivo.
 - Se a referência trouxer componentes locais copiados de outro arquivo, use o naming, a sintaxe e a organização deles para procurar equivalentes nas libraries oficiais conectadas.
 - Só aceite componente local como evidência de análise; não o promova automaticamente para o template final.
@@ -259,78 +333,6 @@ Ela existe para dar contexto comum às etapas da jornada:
 ## Regra
 
 Quando uma nova etapa ou um novo caso entrar, tente primeiro preenchê-lo com este modelo antes de pensar em criar novo agente ou nova skill.
-
-===== END FILE =====
-
-===== FILE: .github/skills/jornada-consignado-clusterizado/etapas/consentimento.md =====
-# Etapa: Consentimento
-
-## Objetivo
-
-Explicar a consulta de dados, capturar a autorização e adaptar o conteúdo ao cluster.
-
-## Padrões esperados
-
-- títulos legais e operacionais por cluster
-- accordions com detalhe expandido
-- possíveis avisos adicionais por cluster
-- estado aberto/fechado como variant
-
-## Agrupamentos comuns
-
-- tela base fechada
-- tela base aberta
-- outras telas do mesmo módulo quando existirem
-
-===== END FILE =====
-
-===== FILE: .github/skills/jornada-consignado-clusterizado/etapas/efetivacao.md =====
-# Etapa: Efetivação
-
-## Objetivo
-
-Concluir a jornada com aceite final, confirmação operacional e mensagens de conclusão.
-
-## Padrões esperados
-
-- confirmação final
-- recibos ou resumos finais
-- textos legais por cluster e modalidade
-- possíveis blocos condicionais por produto contratado
-- finais alternativos por cluster, como token, anuência externa ou conclusão direta
-
-## Agrupamentos comuns
-
-- `Efetivacao/Base`
-- `Efetivacao/Token`
-- `Efetivacao/Anuencia`
-- `Efetivacao/Conclusao`
-
-===== END FILE =====
-
-===== FILE: .github/skills/jornada-consignado-clusterizado/etapas/revisao.md =====
-# Etapa: Revisão
-
-## Objetivo
-
-Conferir dados, condições e decisões antes da efetivação.
-
-## Padrões esperados
-
-- resumos de dados
-- blocos de conferência
-- mensagens de alerta e aceite
-- detalhes do contrato com accordions
-- informações importantes com itens condicionais por modalidade e adicionais
-- bottom sheet normativo, como o caso da 4790
-- diferenças de texto e de presença de bloco por cluster, modalidade e adicionais
-
-## Agrupamentos comuns
-
-- `Revisao/Base`
-- `Revisao/DetalhesContrato`
-- `Revisao/InformacoesImportantes`
-- `Revisao/BottomSheet4790`
 
 ===== END FILE =====
 

@@ -7,18 +7,35 @@
 - `documentação por etapa da jornada`
 - `contexto por módulo`
 - `agrupamento de telas por conjunto comparável`
+- `um mesmo arquivo pode servir como referência, construção e library final`
 
 ## Fluxo
 
 1. Escolher a etapa da jornada.
-2. Mapear módulos, telas e eixos de variação.
-3. Montar os conjuntos comparáveis de telas, de preferência com links de frame e `node-id`.
-4. Analisar cada conjunto.
-5. Consolidar o handoff.
-6. Decidir o template.
-7. Planejar parametrização.
-8. Escrever no Figma.
-9. Curar o aprendizado.
+2. Confirmar se o mesmo arquivo será usado como:
+   - referência
+   - construção
+   - library final
+3. Mapear páginas de referência e páginas de escrita dentro desse arquivo.
+4. Mapear módulos, telas e eixos de variação.
+5. Montar os conjuntos comparáveis de telas, de preferência com links de frame e `node-id`.
+6. Analisar cada conjunto.
+7. Consolidar o handoff.
+8. Decidir o template.
+9. Planejar parametrização.
+10. Escrever no Figma.
+11. Curar o aprendizado.
+
+## Regra de páginas
+
+- páginas de referência servem como evidência visual e estrutural;
+- páginas de referência não são o destino do padrão final;
+- páginas de escrita devem ser explicitadas, por exemplo:
+  - `Components`
+  - `Templates`
+  - `Checks`
+  - ou outra página de trabalho indicada pelo usuário;
+- o template final, as variables e os checks podem nascer no mesmo arquivo que contém as referências, desde que em páginas separadas.
 
 ## Fan-out recomendado
 

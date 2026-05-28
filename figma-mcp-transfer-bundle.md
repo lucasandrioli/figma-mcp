@@ -122,15 +122,17 @@ figma-mcp/
 ## Fluxo operacional
 
 1. Escolher a etapa da jornada.
-2. Preencher o `briefing de etapa`.
-3. Mapear módulos, telas, estados, modalidades, adicionais e clusters.
-4. Montar o `plano de agrupamento`.
-5. Rodar o `analista-de-conjunto-de-telas` em cada grupo.
-6. Consolidar com o `normalizador-de-handoff-de-etapa`.
-7. Decidir o template com o `desenhador-de-template-de-etapa`.
-8. Planejar a parametrização com o `planejador-de-parametrizacao-de-etapa`.
-9. Escrever no Figma com o `criador-de-parametrizacao-de-etapa`.
-10. Registrar aprendizado com o `curador-de-aprendizado-de-jornada`.
+2. Confirmar se o mesmo arquivo atual será usado como referência, construção e library final.
+3. Preencher o `briefing de etapa`.
+4. Mapear módulos, telas, estados, modalidades, adicionais e clusters.
+5. Mapear páginas de referência e páginas de escrita.
+6. Montar o `plano de agrupamento`.
+7. Rodar o `analista-de-conjunto-de-telas` em cada grupo.
+8. Consolidar com o `normalizador-de-handoff-de-etapa`.
+9. Decidir o template com o `desenhador-de-template-de-etapa`.
+10. Planejar a parametrização com o `planejador-de-parametrizacao-de-etapa`.
+11. Escrever no Figma com o `criador-de-parametrizacao-de-etapa`.
+12. Registrar aprendizado com o `curador-de-aprendizado-de-jornada`.
 
 ## Modelo de execução no VS Code
 
@@ -138,6 +140,22 @@ figma-mcp/
 - os demais agents podem operar como workers/subagents internos;
 - leitura e análise podem usar fan-out por conjunto, frame ou modalidade;
 - escrita com `use_figma` continua sempre sequencial.
+
+## Mesmo arquivo como library final
+
+Em muitos casos, o mesmo arquivo Figma será usado para:
+
+- colar referências;
+- instanciar libraries base do iDS;
+- construir componentes e templates;
+- criar variables e checks;
+- virar a library final do domínio.
+
+Nesse cenário:
+
+- as páginas de referência servem só como evidência;
+- o padrão final deve nascer em páginas de escrita, como `Components`, `Templates` e `Checks`;
+- o agent não deve editar os frames colados como se eles fossem o destino final.
 
 ## Como isso escala no Itaú
 
@@ -461,6 +479,7 @@ Use a skill [desenhar-template-de-etapa](../skills/desenhar-template-de-etapa/SK
 - usar o inventário de componentes observados como base de busca nas libraries oficiais conectadas;
 - usar a classificação por bloco (`already-connected`, `exact-swap`, `compose-from-primitives`, `blocked`) para decidir o que mantém, troca, recompõe ou escala como bloqueio;
 - reconstruir o template final do zero com instâncias oficiais, sem herdar a estrutura local quebrada das referências.
+- ler nas páginas de referência, mas escrever apenas nas páginas de construção do mesmo arquivo-library;
 - reconectar uma seção por vez, não a tela inteira de uma vez;
 - escolher a variant correta antes de instanciar ou trocar, sem cair no default cego;
 - evitar criar cards genéricos de apoio quando a mudança pertence a um bloco financeiro, resumo, juros ou total já existente na tela;
@@ -527,6 +546,7 @@ Seu papel não é analisar uma tela específica sozinho. Seu papel é:
 
 - entender qual etapa da jornada está em jogo;
 - entender quais módulos e telas daquela etapa estão em jogo;
+- entender quais páginas do mesmo arquivo são páginas de referência e quais são páginas de escrita;
 - entender como as telas foram agrupadas;
 - disparar a análise por conjunto de telas;
 - consolidar handoffs;
@@ -550,12 +570,21 @@ Trabalhe assim:
 
 1. Ler a etapa da jornada.
 2. Ler o plano de agrupamento das telas.
-3. Mandar o `analista-de-conjunto-de-telas` analisar cada conjunto comparável, preferindo contexto por frame com `node-id`.
-4. Mandar o `normalizador-de-handoff-de-etapa` consolidar a leitura.
-5. Mandar o `desenhador-de-template-de-etapa` decidir ou ajustar o template.
-6. Mandar o `planejador-de-parametrizacao-de-etapa` definir strings, booleans, variants e modes.
-7. Mandar o `criador-de-parametrizacao-de-etapa` escrever no Figma apenas na etapa final.
-8. Mandar o `curador-de-aprendizado-de-jornada` registrar o que foi aprendido.
+3. Confirmar se o mesmo arquivo será usado como:
+   - referência
+   - construção
+   - library final
+4. Confirmar em quais páginas ficam:
+   - referências
+   - components
+   - templates
+   - checks
+5. Mandar o `analista-de-conjunto-de-telas` analisar cada conjunto comparável, preferindo contexto por frame com `node-id`.
+6. Mandar o `normalizador-de-handoff-de-etapa` consolidar a leitura.
+7. Mandar o `desenhador-de-template-de-etapa` decidir ou ajustar o template.
+8. Mandar o `planejador-de-parametrizacao-de-etapa` definir strings, booleans, variants e modes.
+9. Mandar o `criador-de-parametrizacao-de-etapa` escrever no Figma apenas na etapa final.
+10. Mandar o `curador-de-aprendizado-de-jornada` registrar o que foi aprendido.
 
 ## Fan-out
 
@@ -576,6 +605,8 @@ Entregue sempre:
 
 - etapa analisada;
 - módulos e telas analisados;
+- páginas de referência usadas;
+- páginas de escrita usadas;
 - conjuntos de telas processados;
 - template decidido;
 - plano de parametrização;
@@ -1066,6 +1097,18 @@ O material de referência serve para:
 
 O template final não deve nascer por clone do frame analisado.
 
+Se o mesmo arquivo for ao mesmo tempo:
+
+- referência
+- construção
+- library final
+
+então:
+
+- leia nas páginas de referência;
+- escreva apenas nas páginas de construção;
+- não trate os frames colados como destino do padrão final.
+
 Ele deve ser reconstruído do zero usando:
 
 - instâncias das libraries oficiais conectadas ao arquivo;
@@ -1319,6 +1362,7 @@ Para cada bloco relevante, registre:
 - Se a seleção de um adicional alterar juros, totalizadores, resumos ou condições da própria tela, prefira modelar isso dentro dos blocos estruturais corretos antes de criar um card extra genérico.
 - Considere a library de componentes e a library de tokens como fontes separadas.
 - Reconstrua o template final do zero; não use clone do frame de referência como base do padrão final.
+- Se o arquivo atual também for a library final do domínio, mantenha a leitura nas páginas de referência e a escrita nas páginas de `Components`, `Templates`, `Checks` ou equivalentes indicadas pelo usuário.
 - Use o inventário de componentes observados nas referências como guia de busca dentro das libraries oficiais conectadas ao arquivo.
 - Se a referência trouxer componentes locais copiados de outro arquivo, use o naming, a sintaxe e a organização deles para procurar equivalentes nas libraries oficiais conectadas.
 - Só aceite componente local como evidência de análise; não o promova automaticamente para o template final.
@@ -1602,6 +1646,15 @@ Só crie gaps reais.
 - componentes:
 - tokens:
 
+## Papel do arquivo atual
+- este arquivo também é a library final do domínio?:
+- páginas de referência:
+- páginas de escrita:
+  - components:
+  - templates:
+  - checks:
+  - outras:
+
 ## Observações
 - riscos:
 - exceções:
@@ -1620,6 +1673,12 @@ Só crie gaps reais.
 ```md
 ## Etapa
 - Nome:
+- Páginas de referência:
+- Páginas de escrita:
+  - components:
+  - templates:
+  - checks:
+  - outras:
 
 ## Grupo 1
 - Módulo:
@@ -1857,18 +1916,35 @@ Antes de planejar template ou variável, classifique cada diferença em um deste
 - `documentação por etapa da jornada`
 - `contexto por módulo`
 - `agrupamento de telas por conjunto comparável`
+- `um mesmo arquivo pode servir como referência, construção e library final`
 
 ## Fluxo
 
 1. Escolher a etapa da jornada.
-2. Mapear módulos, telas e eixos de variação.
-3. Montar os conjuntos comparáveis de telas, de preferência com links de frame e `node-id`.
-4. Analisar cada conjunto.
-5. Consolidar o handoff.
-6. Decidir o template.
-7. Planejar parametrização.
-8. Escrever no Figma.
-9. Curar o aprendizado.
+2. Confirmar se o mesmo arquivo será usado como:
+   - referência
+   - construção
+   - library final
+3. Mapear páginas de referência e páginas de escrita dentro desse arquivo.
+4. Mapear módulos, telas e eixos de variação.
+5. Montar os conjuntos comparáveis de telas, de preferência com links de frame e `node-id`.
+6. Analisar cada conjunto.
+7. Consolidar o handoff.
+8. Decidir o template.
+9. Planejar parametrização.
+10. Escrever no Figma.
+11. Curar o aprendizado.
+
+## Regra de páginas
+
+- páginas de referência servem como evidência visual e estrutural;
+- páginas de referência não são o destino do padrão final;
+- páginas de escrita devem ser explicitadas, por exemplo:
+  - `Components`
+  - `Templates`
+  - `Checks`
+  - ou outra página de trabalho indicada pelo usuário;
+- o template final, as variables e os checks podem nascer no mesmo arquivo que contém as referências, desde que em páginas separadas.
 
 ## Fan-out recomendado
 

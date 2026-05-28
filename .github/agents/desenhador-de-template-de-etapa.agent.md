@@ -23,6 +23,7 @@ Use a skill [desenhar-template-de-etapa](../skills/desenhar-template-de-etapa/SK
 - usar o inventário de componentes observados como base de busca nas libraries oficiais conectadas;
 - usar a classificação por bloco (`already-connected`, `exact-swap`, `compose-from-primitives`, `blocked`) para decidir o que mantém, troca, recompõe ou escala como bloqueio;
 - reconstruir o template final do zero com instâncias oficiais, sem herdar a estrutura local quebrada das referências.
+- ler nas páginas de referência, mas escrever apenas nas páginas de construção do mesmo arquivo-library;
 - reconectar uma seção por vez, não a tela inteira de uma vez;
 - escolher a variant correta antes de instanciar ou trocar, sem cair no default cego;
 - evitar criar cards genéricos de apoio quando a mudança pertence a um bloco financeiro, resumo, juros ou total já existente na tela;
