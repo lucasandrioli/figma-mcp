@@ -1,9 +1,6 @@
 # Offline Copilot Package
 
-Use este pacote quando o ambiente do VS Code:
-- não tiver internet
-- não tiver terminal
-- não puder acessar GitHub ou raw URLs
+Formato offline sem code fences externas, para evitar ambiguidade com arquivos Markdown que já contêm blocos cercados por crases.
 
 ## Ordem de uso
 
@@ -55,12 +52,12 @@ Use este pacote quando o ambiente do VS Code:
   - `.github/skills/operar-jornada-clusterizada/references/disciplina-de-tools-mcp.md`
   - `.github/skills/operar-jornada-clusterizada/references/eixos-de-variacao.md`
   - `.github/skills/operar-jornada-clusterizada/references/modelo-operacional.md`
-- `chunk-06.md`: 4 arquivos
+- `chunk-06.md`: 3 arquivos
   - `.github/skills/operar-jornada-clusterizada/references/orquestracao-multi-agent-vscode.md`
   - `.github/skills/operar-jornada-clusterizada/references/regras-de-escalabilidade.md`
   - `.github/skills/operar-jornada-clusterizada/references/tools-and-prompts-oficial-figma-mcp.md`
+- `chunk-07.md`: 5 arquivos
   - `.github/skills/planejar-parametrizacao-de-etapa/SKILL.md`
-- `chunk-07.md`: 4 arquivos
   - `.github/skills/planejar-parametrizacao-de-etapa/artefatos/exemplos/consentimento-poc-001.md`
   - `.github/skills/planejar-parametrizacao-de-etapa/artefatos/exemplos/simulacao-base-poc-001.md`
   - `.github/skills/planejar-parametrizacao-de-etapa/references/contrato-de-saida.md`

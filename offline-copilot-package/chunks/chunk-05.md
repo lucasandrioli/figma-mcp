@@ -1,6 +1,4 @@
-## FILE: .github/skills/jornada-consignado-clusterizado/etapas/simulacao.md
-
-```md
+===== FILE: .github/skills/jornada-consignado-clusterizado/etapas/simulacao.md =====
 # Etapa: Simulação
 
 ## Objetivo
@@ -102,11 +100,9 @@ Verifique primeiro se a token library atual já cobre:
 
 Só crie gaps reais.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/jornada-consignado-clusterizado/templates/briefing-de-etapa.md
-
-```md
+===== FILE: .github/skills/jornada-consignado-clusterizado/templates/briefing-de-etapa.md =====
 # Briefing de Etapa
 
 ```md
@@ -150,11 +146,9 @@ Só crie gaps reais.
 - ambiguidades que o agente deve perguntar no chat:
 ```
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/jornada-consignado-clusterizado/templates/plano-de-agrupamento.md
-
-```md
+===== FILE: .github/skills/jornada-consignado-clusterizado/templates/plano-de-agrupamento.md =====
 # Plano de Agrupamento
 
 ```md
@@ -195,11 +189,9 @@ Só crie gaps reais.
 - Objetivo da análise:
 ```
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/normalizar-handoff-de-etapa/SKILL.md
-
-```md
+===== FILE: .github/skills/normalizar-handoff-de-etapa/SKILL.md =====
 ---
 name: normalizar-handoff-de-etapa
 description: Consolida análises de uma etapa em um relatório único pronto para template, parametrização e curadoria.
@@ -215,11 +207,9 @@ description: Consolida análises de uma etapa em um relatório único pronto par
 
 Transformar análises parciais em um handoff único, sem contradição e sem duplicação.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/normalizar-handoff-de-etapa/references/estrutura-de-relatorio.md
-
-```md
+===== FILE: .github/skills/normalizar-handoff-de-etapa/references/estrutura-de-relatorio.md =====
 # Estrutura de Relatório
 
 ## Etapa analisada
@@ -252,11 +242,9 @@ Transformar análises parciais em um handoff único, sem contradição e sem dup
 
 ## Pendências humanas
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/operar-jornada-clusterizada/SKILL.md
-
-```md
+===== FILE: .github/skills/operar-jornada-clusterizada/SKILL.md =====
 ---
 name: operar-jornada-clusterizada
 description: Orquestra a operação de análise, template, parametrização e aprendizado para etapas de jornada com cluster, modalidade, adicionais, módulos e telas.
@@ -287,11 +275,9 @@ Escala vem de:
 - eixos de variação explícitos por etapa;
 - escrita no Figma apenas no final.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/operar-jornada-clusterizada/references/disciplina-de-tools-mcp.md
-
-```md
+===== FILE: .github/skills/operar-jornada-clusterizada/references/disciplina-de-tools-mcp.md =====
 # Disciplina de Tools MCP
 
 Consulte também:
@@ -339,11 +325,9 @@ Use `use_figma` apenas:
 - `get_libraries` e `search_design_system` devem acontecer antes de reconstruir qualquer padrão com design system oficial.
 - `use_figma` pode ser usado em leitura somente quando `get_design_context` e `get_metadata` não bastarem.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/operar-jornada-clusterizada/references/eixos-de-variacao.md
-
-```md
+===== FILE: .github/skills/operar-jornada-clusterizada/references/eixos-de-variacao.md =====
 # Eixos de Variação
 
 Toda etapa deve ser lida com estes eixos explícitos:
@@ -371,11 +355,9 @@ Antes de planejar template ou variável, classifique cada diferença em um deste
 - `tela`: composição específica que abre dentro da mesma etapa
 - `módulo`: assunto ou pacote funcional, como seguro, portabilidade, detalhes do contrato
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/operar-jornada-clusterizada/references/modelo-operacional.md
-
-```md
+===== FILE: .github/skills/operar-jornada-clusterizada/references/modelo-operacional.md =====
 # Modelo Operacional
 
 ## Estrutura
@@ -411,5 +393,5 @@ Antes de planejar template ou variável, classifique cada diferença em um deste
 - etapa `simulacao`, tela `base`, modalidade `refinanciamento`, com e sem adicionais
 - etapa `revisao`, módulo `detalhes do contrato`, tela `acordeoes`, estado `aberto`
 
-```
+===== END FILE =====
 

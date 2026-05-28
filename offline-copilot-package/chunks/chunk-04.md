@@ -1,6 +1,4 @@
-## FILE: .github/skills/desenhar-template-de-etapa/references/checklist-de-descoberta-antes-da-escrita.md
-
-```md
+===== FILE: .github/skills/desenhar-template-de-etapa/references/checklist-de-descoberta-antes-da-escrita.md =====
 # Checklist de Descoberta Antes da Escrita
 
 Use este checklist antes de qualquer `use_figma` que vá mutar canvas.
@@ -47,11 +45,9 @@ Se algum desses itens estiver em aberto:
 - registre a pendência;
 - continue a descoberta ou peça confirmação humana curta no chat.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/desenhar-template-de-etapa/references/reconectar-ao-design-system.md
-
-```md
+===== FILE: .github/skills/desenhar-template-de-etapa/references/reconectar-ao-design-system.md =====
 # Reconectar ao Design System
 
 Use esta referência quando a etapa exigir que o template final seja reconstruído com base em libraries oficiais conectadas ao arquivo.
@@ -204,11 +200,9 @@ Para cada bloco relevante, registre:
 - risco estrutural observado
 - observações para reconstrução
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/desenhar-template-de-etapa/references/regras-de-template.md
-
-```md
+===== FILE: .github/skills/desenhar-template-de-etapa/references/regras-de-template.md =====
 # Regras de Template
 
 - Escolha a estrutura dominante.
@@ -234,11 +228,9 @@ Para cada bloco relevante, registre:
 - Não aceite card com altura menor do que `conteúdo + padding`.
 - Não aceite `component set` com variantes cortadas pelo bounding.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/jornada-consignado-clusterizado/SKILL.md
-
-```md
+===== FILE: .github/skills/jornada-consignado-clusterizado/SKILL.md =====
 ---
 name: jornada-consignado-clusterizado
 description: Contexto operacional da jornada de consignado com etapas, módulos, telas, clusters, modalidades e adicionais reutilizado pelos agentes da operação.
@@ -268,11 +260,9 @@ Ela existe para dar contexto comum às etapas da jornada:
 
 Quando uma nova etapa ou um novo caso entrar, tente primeiro preenchê-lo com este modelo antes de pensar em criar novo agente ou nova skill.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/jornada-consignado-clusterizado/etapas/consentimento.md
-
-```md
+===== FILE: .github/skills/jornada-consignado-clusterizado/etapas/consentimento.md =====
 # Etapa: Consentimento
 
 ## Objetivo
@@ -292,11 +282,9 @@ Explicar a consulta de dados, capturar a autorização e adaptar o conteúdo ao 
 - tela base aberta
 - outras telas do mesmo módulo quando existirem
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/jornada-consignado-clusterizado/etapas/efetivacao.md
-
-```md
+===== FILE: .github/skills/jornada-consignado-clusterizado/etapas/efetivacao.md =====
 # Etapa: Efetivação
 
 ## Objetivo
@@ -318,11 +306,9 @@ Concluir a jornada com aceite final, confirmação operacional e mensagens de co
 - `Efetivacao/Anuencia`
 - `Efetivacao/Conclusao`
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/jornada-consignado-clusterizado/etapas/revisao.md
-
-```md
+===== FILE: .github/skills/jornada-consignado-clusterizado/etapas/revisao.md =====
 # Etapa: Revisão
 
 ## Objetivo
@@ -346,5 +332,5 @@ Conferir dados, condições e decisões antes da efetivação.
 - `Revisao/InformacoesImportantes`
 - `Revisao/BottomSheet4790`
 
-```
+===== END FILE =====
 

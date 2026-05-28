@@ -1,6 +1,4 @@
-## FILE: .github/skills/analisar-conjunto-de-telas/references/contrato-de-saida.md
-
-```md
+===== FILE: .github/skills/analisar-conjunto-de-telas/references/contrato-de-saida.md =====
 # Contrato de Saída
 
 Entregue exatamente:
@@ -51,11 +49,9 @@ Entregue exatamente:
 - Ambiguidades:
 - Pontos para revisão humana:
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/analisar-conjunto-de-telas/references/heuristicas-estruturais.md
-
-```md
+===== FILE: .github/skills/analisar-conjunto-de-telas/references/heuristicas-estruturais.md =====
 # Heurísticas Estruturais
 
 - Se a mesma função aparece em todos os clusters, trate como parte do padrão-base.
@@ -79,11 +75,9 @@ Entregue exatamente:
 - Se a referência vier de um frame copiado e trouxer componentes locais, trate esses nomes como pista de busca, não como fonte oficial de reconstrução.
 - Se um componente não estiver instanciado na library oficial do arquivo atual, procure equivalentes pela sintaxe, organização e naming nas libraries conectadas antes de criar algo novo.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/analisar-conjunto-de-telas/references/matriz-de-decisao.md
-
-```md
+===== FILE: .github/skills/analisar-conjunto-de-telas/references/matriz-de-decisao.md =====
 # Matriz de Decisão
 
 | Situação | Decisão |
@@ -103,11 +97,9 @@ Entregue exatamente:
 `mode` representa cluster.  
 `variant` representa estado/interação.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/criar-parametrizacao-de-etapa/SKILL.md
-
-```md
+===== FILE: .github/skills/criar-parametrizacao-de-etapa/SKILL.md =====
 ---
 name: criar-parametrizacao-de-etapa
 description: Executa a criação final de collection, modes, variables e binds locais aprovados para uma etapa da jornada.
@@ -123,11 +115,9 @@ description: Executa a criação final de collection, modes, variables e binds l
 
 Esta é a única skill autorizada a escrever a parametrização local no Figma.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/criar-parametrizacao-de-etapa/references/checklist-de-execucao.md
-
-```md
+===== FILE: .github/skills/criar-parametrizacao-de-etapa/references/checklist-de-execucao.md =====
 # Checklist de Execução
 
 - O template final está aprovado.
@@ -142,11 +132,9 @@ Esta é a única skill autorizada a escrever a parametrização local no Figma.
 - A escrita será feita apenas nesta etapa.
 - A validação por leitura MCP será executada depois.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/curar-aprendizado-de-jornada/SKILL.md
-
-```md
+===== FILE: .github/skills/curar-aprendizado-de-jornada/SKILL.md =====
 ---
 name: curar-aprendizado-de-jornada
 description: Registra feedback, erros, acertos e atualizações propostas da operação de jornada clusterizada.
@@ -165,11 +153,9 @@ description: Registra feedback, erros, acertos e atualizações propostas da ope
 
 Registre tudo o que vale repetir ou evitar entre etapas da jornada.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/curar-aprendizado-de-jornada/learning/acertos-recorrentes.md
-
-```md
+===== FILE: .github/skills/curar-aprendizado-de-jornada/learning/acertos-recorrentes.md =====
 # Acertos Recorrentes
 
 ```md
@@ -198,11 +184,9 @@ Registre tudo o que vale repetir ou evitar entre etapas da jornada.
 - Regra que vale repetir: template final só fecha depois da revisão da camada visual.
 - Status: válido
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/curar-aprendizado-de-jornada/learning/atualizacoes-propostas.md
-
-```md
+===== FILE: .github/skills/curar-aprendizado-de-jornada/learning/atualizacoes-propostas.md =====
 # Atualizações Propostas
 
 ```md
@@ -216,11 +200,9 @@ Registre tudo o que vale repetir ou evitar entre etapas da jornada.
 - Status:
 ```
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/curar-aprendizado-de-jornada/learning/erros-recorrentes.md
-
-```md
+===== FILE: .github/skills/curar-aprendizado-de-jornada/learning/erros-recorrentes.md =====
 # Erros Recorrentes
 
 ```md
@@ -241,11 +223,9 @@ Registre tudo o que vale repetir ou evitar entre etapas da jornada.
 - Regra candidata: mode por cluster deve ficar apenas em instâncias, nunca na base do template.
 - Status: válido
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/curar-aprendizado-de-jornada/learning/feedback-e-revisoes.md
-
-```md
+===== FILE: .github/skills/curar-aprendizado-de-jornada/learning/feedback-e-revisoes.md =====
 # Feedback e Revisões
 
 ```md
@@ -259,11 +239,9 @@ Registre tudo o que vale repetir ou evitar entre etapas da jornada.
 - Próxima ação:
 ```
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/desenhar-template-de-etapa/SKILL.md
-
-```md
+===== FILE: .github/skills/desenhar-template-de-etapa/SKILL.md =====
 ---
 name: desenhar-template-de-etapa
 description: Decide ou ajusta o template reutilizável de uma etapa da jornada a partir do relatório consolidado.
@@ -322,5 +300,5 @@ Ele deve ser reconstruído do zero usando:
 - a composição cresce por `HUG` quando o conteúdo cresce;
 - alterações de adicionais selecionados entram primeiro nos blocos corretos da tela, antes de virar card extra genérico.
 
-```
+===== END FILE =====
 

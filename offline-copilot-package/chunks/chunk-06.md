@@ -1,6 +1,4 @@
-## FILE: .github/skills/operar-jornada-clusterizada/references/orquestracao-multi-agent-vscode.md
-
-```md
+===== FILE: .github/skills/operar-jornada-clusterizada/references/orquestracao-multi-agent-vscode.md =====
 # Orquestração Multi-Agent no VS Code
 
 Referências oficiais:
@@ -143,11 +141,9 @@ Modele a operação como:
 
 Só use nesting adicional se o ambiente do VS Code estiver com suporte e configuração apropriados.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/operar-jornada-clusterizada/references/regras-de-escalabilidade.md
-
-```md
+===== FILE: .github/skills/operar-jornada-clusterizada/references/regras-de-escalabilidade.md =====
 # Regras de Escalabilidade
 
 - Não crie um agente por tela.
@@ -171,11 +167,9 @@ Só use nesting adicional se o ambiente do VS Code estiver com suporte e configu
 - uso de modes apenas para cluster
 - uso de variants apenas para estado/interação
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/operar-jornada-clusterizada/references/tools-and-prompts-oficial-figma-mcp.md
-
-```md
+===== FILE: .github/skills/operar-jornada-clusterizada/references/tools-and-prompts-oficial-figma-mcp.md =====
 # Tools and Prompts do Figma MCP
 
 Referência operacional baseada na documentação oficial:
@@ -386,38 +380,5 @@ Não são tools centrais da operação de análise de jornadas, exceto quando o 
 - não trate `use_figma` como primeira tool de descoberta quando uma tool de leitura oficial resolver;
 - não dependa de screenshot em ambientes corporativos onde imagem não pode circular.
 
-```
-
-## FILE: .github/skills/planejar-parametrizacao-de-etapa/SKILL.md
-
-```md
----
-name: planejar-parametrizacao-de-etapa
-description: Converte o template decidido em plano explícito de modes, strings, booleans, variants e limites.
----
-
-# Planejar Parametrização de Etapa
-
-## Arquivos desta skill
-
-- [Regras de modelagem](./references/regras-de-modelagem.md)
-- [Contrato de saída](./references/contrato-de-saida.md)
-- [Exemplo de consentimento](./artefatos/exemplos/consentimento-poc-001.md)
-
-## Objetivo
-
-Produzir um plano que o agente criador consiga executar sem reinterpretar a análise.
-
-## Regra adicional
-
-Collections não servem só para texto.
-
-Elas podem concentrar:
-
-- strings
-- booleans
-- números
-- outras variables locais necessárias ao domínio
-
-```
+===== END FILE =====
 

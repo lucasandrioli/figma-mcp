@@ -1,6 +1,4 @@
-## FILE: README.md
-
-```md
+===== FILE: README.md =====
 # Figma MCP para Jornada Clusterizada
 
 Este repositório prepara uma operação de design agêntica para jornadas com:
@@ -215,11 +213,9 @@ Referência recomendada:
 - collections não servem só para texto; podem concentrar strings, booleans e outros parâmetros locais de domínio;
 - a POC de consentimento já está registrada como exemplo em `planejar-parametrizacao-de-etapa/artefatos/exemplos/`.
 
-```
+===== END FILE =====
 
-## FILE: .github/agents/analista-de-conjunto-de-telas.agent.md
-
-```md
+===== FILE: .github/agents/analista-de-conjunto-de-telas.agent.md =====
 ---
 name: Analista de Conjunto de Telas
 description: Analisa um conjunto comparável de telas da mesma etapa e separa estado, cluster, modalidade, adicionais, tela e estrutura.
@@ -274,11 +270,9 @@ Separar claramente:
 - Não escreva no Figma.
 - Não misture telas de grupos diferentes no mesmo parecer.
 
-```
+===== END FILE =====
 
-## FILE: .github/agents/criador-de-parametrizacao-de-etapa.agent.md
-
-```md
+===== FILE: .github/agents/criador-de-parametrizacao-de-etapa.agent.md =====
 ---
 name: Criador de Parametrização de Etapa
 description: Executa a criação final de collection, modes, variables e binds locais aprovados para uma etapa da jornada.
@@ -307,11 +301,9 @@ Use a skill [criar-parametrizacao-de-etapa](../skills/criar-parametrizacao-de-et
 - Não recrie componentes.
 - Não aplique mode explícito no template-base; mode de cluster fica nas instâncias de checagem e de uso.
 
-```
+===== END FILE =====
 
-## FILE: .github/agents/curador-de-aprendizado-de-jornada.agent.md
-
-```md
+===== FILE: .github/agents/curador-de-aprendizado-de-jornada.agent.md =====
 ---
 name: Curador de Aprendizado de Jornada
 description: Registra acertos, erros, feedbacks e atualizações propostas da operação sem editar a skill automaticamente.
@@ -337,5 +329,5 @@ Use a skill [curar-aprendizado-de-jornada](../skills/curar-aprendizado-de-jornad
 Aprendizado pode ser registrado automaticamente.
 Mudança estrutural em skill ou agente só entra com aprovação humana.
 
-```
+===== END FILE =====
 

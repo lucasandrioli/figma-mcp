@@ -1,6 +1,4 @@
-## FILE: .github/agents/desenhador-de-template-de-etapa.agent.md
-
-```md
+===== FILE: .github/agents/desenhador-de-template-de-etapa.agent.md =====
 ---
 name: Desenhador de Template de Etapa
 description: Decide ou ajusta o template reutilizável de uma etapa da jornada com base no relatório consolidado.
@@ -38,11 +36,9 @@ Use a skill [desenhar-template-de-etapa](../skills/desenhar-template-de-etapa/SK
 - Não trate cluster como estado.
 - Não use clone do frame de referência como base do padrão final.
 
-```
+===== END FILE =====
 
-## FILE: .github/agents/normalizador-de-handoff-de-etapa.agent.md
-
-```md
+===== FILE: .github/agents/normalizador-de-handoff-de-etapa.agent.md =====
 ---
 name: Normalizador de Handoff de Etapa
 description: Consolida análises parciais de uma etapa da jornada em um relatório único e operacional.
@@ -69,11 +65,9 @@ Use a skill [normalizar-handoff-de-etapa](../skills/normalizar-handoff-de-etapa/
 
 Seu relatório deve servir para a próxima etapa sem reinterpretar a análise bruta.
 
-```
+===== END FILE =====
 
-## FILE: .github/agents/operador-de-jornada.agent.md
-
-```md
+===== FILE: .github/agents/operador-de-jornada.agent.md =====
 ---
 name: Operador de Jornada
 description: Orquestra a analise, o template, a parametrizacao e a curadoria de qualquer etapa da jornada clusterizada.
@@ -143,11 +137,9 @@ Entregue sempre:
 - o que foi escrito no Figma;
 - pendências humanas.
 
-```
+===== END FILE =====
 
-## FILE: .github/agents/planejador-de-parametrizacao-de-etapa.agent.md
-
-```md
+===== FILE: .github/agents/planejador-de-parametrizacao-de-etapa.agent.md =====
 ---
 name: Planejador de Parametrização de Etapa
 description: Converte o template e o relatório consolidado em um plano explícito de modes, strings, booleans e limites.
@@ -179,11 +171,9 @@ Use a skill [planejar-parametrizacao-de-etapa](../skills/planejar-parametrizacao
 
 Você planeja. Você não escreve no Figma.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/analisar-conjunto-de-telas/SKILL.md
-
-```md
+===== FILE: .github/skills/analisar-conjunto-de-telas/SKILL.md =====
 ---
 name: analisar-conjunto-de-telas
 description: Analisa um conjunto comparável de telas da mesma etapa para separar estrutura, cluster, estado, modalidade, adicionais, módulo e tela.
@@ -244,11 +234,9 @@ O analista deve sair dessa etapa com:
 - padrões de naming úteis para busca;
 - candidatos prováveis de equivalência nas libraries oficiais conectadas.
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/analisar-conjunto-de-telas/references/agrupamento-de-telas.md
-
-```md
+===== FILE: .github/skills/analisar-conjunto-de-telas/references/agrupamento-de-telas.md =====
 # Agrupamento de Telas
 
 ## Regra
@@ -293,5 +281,5 @@ Agrupe por conjunto comparável.
 - misturar casos com e sem adicionais quando isso muda a composição
 - misturar consentimento com simulação
 
-```
+===== END FILE =====
 

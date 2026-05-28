@@ -1,6 +1,35 @@
-## FILE: .github/skills/planejar-parametrizacao-de-etapa/artefatos/exemplos/consentimento-poc-001.md
+===== FILE: .github/skills/planejar-parametrizacao-de-etapa/SKILL.md =====
+---
+name: planejar-parametrizacao-de-etapa
+description: Converte o template decidido em plano explícito de modes, strings, booleans, variants e limites.
+---
 
-```md
+# Planejar Parametrização de Etapa
+
+## Arquivos desta skill
+
+- [Regras de modelagem](./references/regras-de-modelagem.md)
+- [Contrato de saída](./references/contrato-de-saida.md)
+- [Exemplo de consentimento](./artefatos/exemplos/consentimento-poc-001.md)
+
+## Objetivo
+
+Produzir um plano que o agente criador consiga executar sem reinterpretar a análise.
+
+## Regra adicional
+
+Collections não servem só para texto.
+
+Elas podem concentrar:
+
+- strings
+- booleans
+- números
+- outras variables locais necessárias ao domínio
+
+===== END FILE =====
+
+===== FILE: .github/skills/planejar-parametrizacao-de-etapa/artefatos/exemplos/consentimento-poc-001.md =====
 # Exemplo: Consentimento POC 001
 
 ## Collection local proposta
@@ -42,11 +71,9 @@
 - booleans do POC foram bindados em `visible`, mas a library final pode expor esse controle por outro caminho estrutural
 - a skill não deve assumir nomes fixos de properties ou camadas da library de componentes
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/planejar-parametrizacao-de-etapa/artefatos/exemplos/simulacao-base-poc-001.md
-
-```md
+===== FILE: .github/skills/planejar-parametrizacao-de-etapa/artefatos/exemplos/simulacao-base-poc-001.md =====
 # Exemplo: Simulação Base POC 001
 
 ## Objetivo do teste
@@ -131,11 +158,9 @@ Só crie tokens novos se faltar algo estrutural para a simulação, por exemplo:
 - `cluster` só entra como `mode` quando houver variação real por cluster
 - resumos e totalizadores financeiros são parte estrutural da tela-base quando aparecem de forma recorrente
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/planejar-parametrizacao-de-etapa/references/contrato-de-saida.md
-
-```md
+===== FILE: .github/skills/planejar-parametrizacao-de-etapa/references/contrato-de-saida.md =====
 # Contrato de Saída
 
 ## Collection local proposta
@@ -168,11 +193,9 @@ Só crie tokens novos se faltar algo estrutural para a simulação, por exemplo:
 
 ## Prontidão para criação
 
-```
+===== END FILE =====
 
-## FILE: .github/skills/planejar-parametrizacao-de-etapa/references/regras-de-modelagem.md
-
-```md
+===== FILE: .github/skills/planejar-parametrizacao-de-etapa/references/regras-de-modelagem.md =====
 # Regras de Modelagem
 
 - `mode` é reservado para cluster.
@@ -186,5 +209,5 @@ Só crie tokens novos se faltar algo estrutural para a simulação, por exemplo:
 - A implementação do boolean pode acontecer por `visible` ou por outro vínculo estrutural compatível com a library real.
 - Se um módulo tem layout próprio e conteúdo próprio, ele pode ter template próprio e collection própria.
 
-```
+===== END FILE =====
 
